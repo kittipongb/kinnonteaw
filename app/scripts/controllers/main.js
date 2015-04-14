@@ -8,7 +8,7 @@
  * Controller of the kinnonteawApp
  */
 angular.module('kinnonteawApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,15 +16,15 @@ angular.module('kinnonteawApp')
     ];
 
     $scope.IsVisibleDisplayModal = false;
-    $scope.Title = "You typed Search!";
+    $scope.Title = 'You typed Search!';
 
     $scope.searchClicked = function () {
-        var searchString = $scope.SearchAllData.split(" ");
+        var searchString = $scope.SearchAllData.split(' ');
 
         var stringArray = [];
         for (var i = 0; i < searchString.length; i++) {
             console.log(searchString);
-            if (i != searchString.length - 1) {
+            if (i !== searchString.length - 1) {
                 stringArray.push(searchString[i]);
             }
         }
@@ -33,6 +33,6 @@ angular.module('kinnonteawApp')
         } else {
             $scope.IsVisibleDisplayModal = false;
         }
-    }
+    };
 
-  });
+  }]);

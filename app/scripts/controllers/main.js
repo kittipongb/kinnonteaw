@@ -17,6 +17,7 @@ angular.module('kinnonteawApp')
 
     $scope.IsVisibleDisplayModal = false;
     $scope.Title = 'You typed Search!';
+    $scope.TitleFix = 'Search keyword is';
 
     $scope.searchClicked = function () {
         var searchString = $scope.SearchAllData.split(' ');
@@ -30,6 +31,7 @@ angular.module('kinnonteawApp')
         }
         if (searchString.length > 0) {
             $scope.IsVisibleDisplayModal = true;
+            $scope.Title = $scope.TitleFix + " " + searchString.join(',');
         } else {
             $scope.IsVisibleDisplayModal = false;
         }

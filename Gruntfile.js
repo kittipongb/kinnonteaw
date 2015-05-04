@@ -51,6 +51,17 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      less: {
+        files: [
+          '<%= yeoman.app %>/less/*.less',
+          '<%= yeoman.app %>/less/**/*.less',
+          '<%= yeoman.app %>/scripts/**/*.less'
+        ],
+        tasks: ["less:dev"],
+        options: {
+          livereload: true
+        }
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -243,31 +254,20 @@ module.exports = function (grunt) {
       }
     },
 
-    // The following *-min tasks will produce minified files in the dist folder
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
+    less: {
+      dev: {
+        options: {
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= yeoman.app %>/css/application.css.map',
+          sourceMapFilename: '<%= yeoman.app %>/css/application.css.map',
+        },
+        files: [{
+          src: '<%= yeoman.app %>/less/application.less',
+          dest: '<%= yeoman.app %>/css/application.css'
+        }]
+      }
+    },
 
     imagemin: {
       dist: {
@@ -399,6 +399,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'less:dev',
       'autoprefixer:server',
       'connect:livereload',
       'watch'

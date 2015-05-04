@@ -1,8 +1,8 @@
-<div class="floatingList" style="position:relative;">
-	<div ng-repeat="(key, value) in poiList" class="block masonry-brick" style="position: block;">
-		<div class="restaurant-box-recommended"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" border="0" alt=""></div> 
+<div class="floatingList" style="position: relative; height: 1600px; width: 1280px;">
+	<div ng-repeat="(key, value) in poiList" class="block masonry-brick" style="display: block;float: left;">
+		<div class="restaurant-box-recommended" style="position:absolute; top:-5px; left:-5px;"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" border="0" alt=""></div> 
 				
-		<a href="http://www.twosave.com/th/restaurants/bistro-fredo/" class="img-hover"><img src="http://www.twosave.com/common/images/timthumb.php?src=http://os.twosave.com/common/restaurants/bistro-fredo/cover.jpg&amp;h=210&amp;w=210&amp;zc=1&amp;q=90&amp;s=1" border="0" alt=""></a>
+		<a href="http://www.twosave.com/th/restaurants/bistro-fredo/" class="img-hover"><img src="{{value.ImageLink}}" border="0" alt=""></a>
 			<!-- block-love -->
 
 		<div class="clear padding-top10"></div>

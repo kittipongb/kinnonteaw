@@ -18,7 +18,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist/web',
+    distRoot: __dirname + '/dist'
   };
 
   // Define the configuration for all the tasks
@@ -38,6 +39,17 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
+        }
+      },
+      server: {
+        files: [
+          'server.js',
+          'service/**.js'
+        ],
+        tasks: ["express:dev"],
+        options: {
+          spawn: false,
+          livereload: true
         }
       },
       jsTest: {
@@ -121,6 +133,18 @@ module.exports = function (grunt) {
         options: {
           open: true,
           base: '<%= yeoman.dist %>'
+        }
+      }
+    },
+
+    express: {
+      options: {
+        port: 9999
+      },
+      dev: {
+        options: {
+          script: 'service/server.js',
+          debug: true
         }
       }
     },
@@ -322,13 +346,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
-
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -402,6 +419,7 @@ module.exports = function (grunt) {
       'less:dev',
       'autoprefixer:server',
       'connect:livereload',
+      'express:dev',
       'watch'
     ]);
   });
@@ -429,7 +447,6 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'filerev',

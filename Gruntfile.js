@@ -65,8 +65,8 @@ module.exports = function (grunt) {
       },
       less: {
         files: [
-          '<%= yeoman.app %>/less/*.less',
-          '<%= yeoman.app %>/less/**/*.less',
+          '<%= yeoman.app %>/assets/less/*.less',
+          '<%= yeoman.app %>/assets/less/**/*.less',
           '<%= yeoman.app %>/scripts/**/*.less'
         ],
         tasks: ["less:dev"],
@@ -283,12 +283,12 @@ module.exports = function (grunt) {
         options: {
           sourceMap: true,
           outputSourceFiles: true,
-          sourceMapURL: '<%= yeoman.app %>/css/application.css.map',
-          sourceMapFilename: '<%= yeoman.app %>/css/application.css.map',
+          sourceMapURL: '<%= yeoman.app %>/assets/css/application.css.map',
+          sourceMapFilename: '<%= yeoman.app %>/assets/css/application.css.map',
         },
         files: [{
-          src: '<%= yeoman.app %>/less/application.less',
-          dest: '<%= yeoman.app %>/css/application.css'
+          src: '<%= yeoman.app %>/assets/less/application.less',
+          dest: '<%= yeoman.app %>/assets/css/application.css'
         }]
       }
     },

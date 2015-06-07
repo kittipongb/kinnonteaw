@@ -8,6 +8,7 @@ angular.module('kinnonteawApp')
 .directive('floatingList', function () {
 	return {
 		restrict: "E",
-		templateUrl: "views/templates/floating-list.html"
+		templateUrl: "views/templates/floatingList.html",
+		controller: 'floatingListController'
 	};
 });

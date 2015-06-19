@@ -143,7 +143,7 @@ module.exports = function (grunt) {
       },
       dev: {
         options: {
-          script: 'service/server.js',
+          script: 'service/mongodb/server.js',
           debug: true
         }
       }

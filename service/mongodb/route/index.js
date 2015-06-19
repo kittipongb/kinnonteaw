@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res){
-	res.send("reiew.js");
+	res.sendFile(appRoot + 'app/index.html');
 });
 
 module.exports = router;

@@ -1,0 +1,120 @@
+{
+	"connection_url" : "mongodb://localhost:27017/",
+	"collection_name" : "KNT",
+	"nodejs_port" : "3030", 
+
+	"mongodb" : {
+		"poi" : {
+			"name" : "Poi",
+			"Id" : "_id",
+			"PlaceName" : "PlaceName",
+			"Address" : "Address",
+			"Province" : "Province",
+			"District" : "District",
+			"SubDistrict" : "SubDistrict",
+			"ZipCode" : "ZipCode",
+			"PoiTypeId" : "PoiTypeId",
+			"Latitude" : "Latitude",
+			"Longitude" : "Longitude",
+			"CoOrdinate" : {
+				"Latitude" : "Latitude",
+				"Longitude" : "Longitude"	
+			}
+		},
+		"poi_type" : {
+			"name" : "PoiType",
+			"Id" : "_id",
+			"PoiTypeNameTh" : "PoiTypeNameTh",
+			"PoiTypeNameEn" : "PoiTypeNameEn",
+			"PoiTypeNameJp" : "PoiTypeNameJp",
+			"PoiTypeNameCn" : "PoiTypeNameCn"
+		},
+		"poi_subtype" : {
+			"name" : "PoiSubType",
+			"Id" : "_id",
+			"PoiSubTypeNameTh" : "PoiSubTypeNameTh",
+			"PoiSubTypeNameEn" : "PoiSubTypeNameEn",
+			"PoiSubTypeNameJp" : "PoiSubTypeNameJp",
+			"PoiSubTypeNameCn" : "PoiSubTypeNameCn"
+		},
+		"user" : {
+			"name" : "User",
+			"Id" : "_id",
+			"DisplayName" : "DisplayName",
+			"Email" : "Email",
+			"Password" : "Password",
+			"RoleId" : "RoleId",
+			"RefId" : "RefId",
+			"Via" : "Via"
+		},
+		"role" : {
+			"name" : "Role",
+			"Id" : "_id",
+			"RoleName" : "RoleName"
+		},
+		"province" : {
+			"name" : "Province",
+			"Id" : "_id",
+			"Province" : "Province",
+			"Part" : "Part"
+		},
+		"district" : {
+			"name" : "District",
+			"Id" : "_id",
+			"ProvinceId" : "ProvinceId",
+			"District" : "District"
+		},
+		"subdistrict" : {
+			"name" : "SubDistrict",
+			"Id" : "_id",
+			"DistrictId" : "DistrictId",
+			"SubDistrict" : "SubDistrict",
+			"ZipCode" : "ZipCode"
+		}
+	},
+	"url" : { 
+		"poi" : {
+			"home" : "/",
+			"loadAllPoi" : "/LoadPoi",
+			"loadPoiByPoiId" : "/LoadPoiById/:PoiId",
+			"createPoi" : "/CreatePoi",
+			"updatePoi" : "/UpdatePoi",
+			"deletePoiByPoiId" : "/DeletePoi/:PoiId"
+		},
+		"poi_type" : {
+			"home" : "/",
+			"loadAllPoiType" : "/LoadPoiType",
+			"createPoiType" : "/CreatePoiType",
+			"updatePoiType" : "/UpdatePoiType",
+			"deletePoiTypeByPoiTypeId" : "/DeletePoiType/:PoiTypeId"
+		},
+		"poi_subtype" : {
+			"home" : "/",
+			"loadAllPoiSubType" : "/LoadPoiSubType",
+			"createPoiSubType" : "/CreatePoiSubType",
+			"updatePoiSubType" : "/UpdatePoiSubType",
+			"deletePoiSubTypeByPoiSubTypeId" : "/DeletePoiSubType/:PoiSubTypeId"
+		},
+		"user" : {
+			"home" : "/",
+			"loadAllUser" : "/LoadUser",
+			"createUser" : "/CreateUser",
+			"updateUser" : "/UpdateUser",
+			"deleteUserByUserId" : "/DeleteUser/:UserId"
+		},
+		"role" : {
+			"home" : "/",
+			"loadAllRole" : "/LoadRole",
+			"createRole" : "/CreateRole",
+			"updateRole" : "/UpdateRole",
+			"deleteRoleByRoleId" : "/DeleteRole/:RoleId"
+		},
+		"review" : {
+			"home" : "/",
+			"loadReviewByPoiId":"/LoadReviewByUserId/:UserId",
+			"createReview" : "/CreateReview",
+			"updateReview" : "/UpdateReview",
+			"deleteReviewByReviewId" : "/DeleteReview/:ReviewId"
+		}
+	}
+}

@@ -2,7 +2,7 @@
 	<div ng-repeat="(key, value) in poiList.blocks" class="block masonry-brick">
 		<div class="box-recommended restaurant"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" ></div> 
 				
-		<a href="{{value.ImageLink}}" class="image-250"><img ng-src="{{value.ImageLink}}" style="width:250px"></a>
+		<a href="{{value.ImageLink}}"><img class="image-block" ng-src="{{value.ImageLink}}"></a>
 
 		<div class="clear padding-top10"></div>
 		<h4 class="font-title block-padtop">{{value.Name}} Rating: {{value.Rating}}</h1>

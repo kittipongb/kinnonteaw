@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+  <head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+	<body>
+	 <div class="col-md-offset-1 col-lg-10 col-md-10 col-sm-12">
+	      <!-- Poi Schema-->
+	      <h4>Poi Schema</h4>
+		  <!--<p>The .table-hover class enables a hover state on table rows:</p>            -->
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>PlaceNameTh</td>
+		        <td>String</td>
+		        <td>ซูชิ ฮิโร</td>
+		      </tr>
+		      <tr>
+		        <td>PlaceNameEn</td>
+		        <td>String</td>
+		        <td>Sushi Hiro</td>
+		      </tr>
+		      <tr>
+		        <td>PlaceNameJp</td>
+		        <td>String</td>
+		        <td>寿司ヒロ</td>
+		      </tr>
+		      <tr>
+		        <td>Address</td>
+		        <td>String</td>
+		        <td>ถนนพระราม 9 (Belle Grand Rama 9 โซน The Shoppes Grand Rama 9) ห้วยขวาง , ห้วยขวาง , กรุงเทพมหานคร 10400</td>
+		      </tr>
+		      <tr>
+		        <td>Province</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>District</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>SubDistrict</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>PoiTypeId</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>Latitude</td>
+		        <td>Number</td>
+		        <td>123.55657878</td>
+		      </tr>
+		      <tr>
+		        <td>Longitude</td>
+		        <td>Number</td>
+		        <td>123.55657878</td>
+		      </tr>
+		      <tr>
+		        <td>Rating</td>
+		        <td>Number</td>
+		        <td>10</td>
+		      </tr>
+		      <tr>
+		        <td>TelNo</td>
+		        <td>String</td>
+		        <td>054-076-2345</td>
+		      </tr>
+		      <tr>
+		        <td>Descripton</td>
+		        <td>String</td>
+		        <td>This is a beautiful place to visit in summer.</td>
+		      </tr>
+		      <tr>
+		        <td>ReviewQuantity</td>
+		        <td>Number</td>
+		        <td>16</td>
+		      </tr>
+		      <tr>
+		        <td>ImageQuantity</td>
+		        <td>Number</td>
+		         <td>10</td>
+		      </tr>
+			 <tr>
+		        <td>Keywords</td>
+		        <td>String</td>
+		        <td>Food, Sushi</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Poi-Type Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>PoiTypeNameTh</td>
+		        <td>String</td>
+		        <td>กิน</td>
+		      </tr>
+		      <tr>
+		        <td>PoiTypeNameEn</td>
+		        <td>String</td>
+		        <td>Eat</td>
+		      </tr>
+		      <tr>
+		        <td>PoiTypeNameJp</td>
+		        <td>ObjectId</td>
+		        <td>食べ</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Poi-SubType Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>PoiTypeId</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>PoiSubTypeNameTh</td>
+		        <td>String</td>
+		        <td>ซูชิ</td>
+		      </tr>
+		      <tr>
+		        <td>PoiSubTypeNameEn</td>
+		        <td>String</td>
+		        <td>Sushi</td>
+		      </tr>
+		      <tr>
+		        <td>PoiSubTypeNameJp</td>
+		        <td>String</td>
+		        <td>寿司</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Province Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>Province</td>
+		        <td>String</td>
+		        <td>กำแพงเพชร</td>
+		      </tr>
+		      <tr>
+		        <td>Part</td>
+		        <td>String</td>
+		        <td>เหนือ</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>District Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>ProvinceId</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>District</td>
+		        <td>String</td>
+		        <td>โกสัมพีนคร</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Sub-District Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>DistrictId</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>SubDistrict</td>
+		        <td>String</td>
+		        <td>ห้วยฝ้ายพัฒนา</td>
+		      </tr>
+		      <tr>
+		        <td>ZipCode</td>
+		        <td>String</td>
+		        <td>34130</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		   <h4>User Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>DisplayName</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>Email</td>
+		        <td>String</td>
+		        <td>ห้วยฝ้ายพัฒนา</td>
+		      </tr>
+		      <tr>
+		        <td>Password</td>
+		        <td>String</td>
+		        <td>34130</td>
+		      </tr>
+		       <tr>
+		        <td>RoleId</td>
+		        <td>String</td>
+		        <td>34130</td>
+		      </tr>
+		       <tr>
+		        <td>Termial</td>
+		        <td>String</td>
+		        <td>34130</td>
+		      </tr>
+		       <tr>
+		        <td>IsActivated</td>
+		        <td>Boolean</td>
+		        <td>34130</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Role Schema</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Field</th>
+		        <th>Type</th>
+		        <th>Value (Ex.)</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>_id</td>
+		        <td>ObjectId</td>
+		        <td>ObjectId("552e27b7a15b8e58197ff0b0")</td>
+		      </tr>
+		      <tr>
+		        <td>RoleName</td>
+		        <td>String</td>
+		        <td>Admin</td>
+		      </tr>
+		    </tbody>
+		  </table>
+	  </div>
+	</body>
+</html>

@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+  <head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+	<body>
+	 <div class="col-md-offset-1 col-lg-10 col-md-10 col-sm-12">
+	      <!-- Poi REST API-->
+	      <h4>Poi REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th class="text-align:center">Method</th>
+		        <th class="text-align:center">Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/poi/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+		        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi/LoadPoi</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">-</td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi/LoadPoiById/:PoiId</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        <li>
+			        	<ul>PoiId</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi/CreatePoi</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+			        <li>
+			        	<ul>Poi Object</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi/UpdatePoi</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+			        <li>
+			        	<ul>Poi Object</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi/DeletePoi/:PoiId</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+			        <li>
+			        	<ul>PoiId</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Poi-Type REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th class="text-align:center">Method</th>
+		        <th class="text-align:center">Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/LoadPoiType</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">-</td>
+		        <td></td> 
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/CreatePoiType</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>Poi Object</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/UpdatePoiType</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>Poi Object</ul>
+			        </li>
+		        </td>
+		        <td>Update Poi-Type Data in Database using Poi Object</td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/DeletePoiType/:PoiTypeId</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>PoiId</ul>
+			        </li>
+		        </td>
+		        <td>Delete Poi-Type by using Poi-Type Id</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Poi-SubType REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th>Method</th>
+		        <th>Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/poi_subtype/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_subtype/LoadPoiSubType</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">-</td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/CreatePoiType</td>
+		        <td>POST</td>
+		        <td>
+		        	<li>
+			        	<ul>Poi Object</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/UpdatePoiType</td>
+		        <td>POST</td>
+		        <td>
+		        	<li>
+			        	<ul>Poi Object</ul>
+			        </li>
+		        </td>
+		        <td>Update Poi-Type Data in Database using Poi Object</td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/poi_type/DeletePoiType/:PoiTypeId</td>
+		        <td>POST</td>
+		        <td>
+		        	<li>
+			        	<ul>PoiId</ul>
+			        </li>
+		        </td>
+		        <td>Delete Poi-Type by using Poi-Type Id</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+	      <h4>User REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th>Method</th>
+		        <th>Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/user/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/user/LoadUser</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">-</td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/user/CreateUser</td>
+		        <td>POST</td>
+		        <td>
+		        	<li>
+			        	<ul>User Object</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/user/UpdateUser</td>
+		        <td>POST</td>
+		        <td>
+		        	<li>
+			        	<ul>User Object</ul>
+			        </li>
+		        </td>
+		        <td>Update User Data in Database using User Object</td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/user/DeleteUser/:UserId</td>
+		        <td>POST</td>
+		        <td>
+		        	<li>
+			        	<ul>UserId</ul>
+			        </li>
+		        </td>
+		        <td>Delete User by using User Id</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Role REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th>Method</th>
+		        <th>Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/role/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/role/LoadRole</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">-</td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/role/CreateRole</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>Role Object</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/role/UpdateRole</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>Role Object</ul>
+			        </li>
+		        </td>
+		        <td>Update Role Data in Database using Role Object</td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/role/DeleteRole/:RoleId</td>
+		        <td class="text-align:center">POST</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>Role Id</ul>
+			        </li>
+		        </td>
+		        <td>Delete Role by using Role Id</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Province REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th>Method</th>
+		        <th>Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/province</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/province/LoadProvince</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      
+		    </tbody>
+		  </table>
+
+		  <h4>District REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th>Method</th>
+		        <th>Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/district/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/district/LoadDistrictByProvinceId/:ProvinceId</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+		        	<li>
+		        		<ul>Province Id</ul>
+		        	</li>
+		        </td>
+		        <td>Load District by Province Id</td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <h4>Sub-District REST API</h4>
+		  <table class="table table-hover table-condensed" >
+		    <thead>
+		      <tr>
+		        <th>Url</th>
+		        <th>Method</th>
+		        <th>Parameter(s)</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>http://localhost:3030/subdistrict/</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+			        -
+		        </td>
+		        <td></td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/LoadSubDistrictByDistrictId/:DistrictId</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+		        	<li>
+		        		<ul>District Id</ul>
+		        	</li>
+		        </td>
+		        <td>Load Sub-District by District Id</td>
+		      </tr>
+		      <tr>
+		        <td>http://localhost:3030/LoadSubDistrictBySubDistrictId/:SubDistrictId</td>
+		        <td class="text-align:center">GET</td>
+		        <td class="text-align:center">
+		        	<li>
+			        	<ul>SubDistrict Id</ul>
+			        </li>
+		        </td>
+		        <td></td>
+		      </tr>
+		      
+		    </tbody>
+		  </table>
+	  </div>
+	</body>
+</html>

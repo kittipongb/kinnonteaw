@@ -21,6 +21,7 @@ var role = require('./route/role');
 var province = require('./route/province');
 var district = require('./route/district');
 var subdistrict = require('./route/subdistrict');
+var schema = require('./route/schema');
 
 //app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -38,7 +39,7 @@ app.use('/review', review);
 app.use('/role', role);
 app.use('/province', province);
 app.use('/district', district);
-app.use('/subdistrict', subdistrict);
+app.use('/schema', schema);
 
 app.listen(config.nodejs_port, function () {
 	//console.log("Start server port " + config.nodejs_port + " is OK...");

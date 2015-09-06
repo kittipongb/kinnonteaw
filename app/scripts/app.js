@@ -27,6 +27,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/poiview', {
+        templateUrl: 'views/poiview.html',
+        controller: 'PoiViewCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

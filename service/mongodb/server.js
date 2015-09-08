@@ -46,12 +46,25 @@ app.use('/rest', rest);
 app.listen(config.nodejs_port, function () {
 	//console.log("Start server port " + config.nodejs_port + " is OK...");
 });
-
+/*
+// Connect to Local
+ 
 mongodb.MongoClient.connect(config.connection_url + config.collection_name, function (err, database) {
     if (err) throw err;
 
     db = database;
 });
+*/
+
+
+// Connect to MongoLab
+ 
+mongodb.MongoClient.connect("mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.com:35713/knt", function (err, database) {
+    if (err) console.log(err, err.stack.split("\n"));
+    console.log(database);
+    db = database;
+});
+
 
 process.on('uncaughtException', function (err) {
     console.log(err);

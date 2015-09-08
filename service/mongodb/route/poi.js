@@ -25,6 +25,7 @@ router.get(config.url.poi.loadPoiByPoiId, function (req, res) {
 		}, function (err, poi) {
 			if (err) {
 				console.log(err);
+                res.send("data not found");
 			} else {
                 console.log(poi);
                 res.json(poi);

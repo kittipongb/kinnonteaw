@@ -17,8 +17,7 @@ router.get(config.url.poi.loadAllPoi, function (req, res, next) {
 
 router.get(config.url.poi.loadPoiByPoiId, function (req, res) {
 	var PoiId = req.params.PoiId;
-	var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiId.toString());
+    var o_id = bson.BSONPure.ObjectID(PoiId.toString());
 	db.collection(config.mongodb.poi.name)
 		.findOne({
 			'_id' : o_id
@@ -36,6 +35,9 @@ router.get(config.url.poi.loadPoiByPoiId, function (req, res) {
 router.post(config.url.poi.createPoi, function(req, res) {
 	var Poi = req.body;
 	console.log('create poi ' + poi);
+    var createDate = new Date ();
+    createDate.setHours ( createDate.getHours() + 7 );// GMT Bangkok +7
+    Poi.CreateDate = createDate;
     db.collection(config.mongodb.poi.name)
         .insert(Poi,
             function (error, NewPoi) {
@@ -45,34 +47,52 @@ router.post(config.url.poi.createPoi, function(req, res) {
 
 });
 
-router.post('/UpdatePoi', function(req, res){
+router.post(config.url.poi.updatePoi, function(req, res){
 	var Poi = req.body;
 	var id = Poi._id;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(id.toString());
-    console.log('type 1 ' + id);
-    db.collection(config.mongodb.poi)
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    
+    db.collection(config.mongodb.poi.name)
         .update({
                 '_id': o_id
             }, {
                 $set: {
-                //    'ProductTypeNameTh': ProductType.ProductTypeNameTh,
-                //    'ProductTypeNameEn': ProductType.ProductTypeNameEn,
-                //    'ProductTypeNameCn': ProductType.ProductTypeNameCn
+                    'PoiNameTh' : Poi.PoiNameTh,
+                    'PoiNameEn' : Poi.PoiNameEn,
+                    'PoiNameJp' : Poi.PoiNameJp,
+                    'Address' : Poi.Address,
+                    'Province': Poi.Province,
+                    'District': Poi.District,
+                    'SubDistrict': Poi.SubDistrict,
+                    'ZipCode': Poi.ZipCode,
+                    'PoiTypeId': Poi.PoiTypeId,
+                    'Latitude': Poi.Latitude,
+                    'Longitude': Poi.Longitude,
+                    'ReviewQuantity' : Poi.ReviewQuantity,
+                    'ImageQuantity' : Poi.ImageQuantity,
+                    'Rating': Poi.Rating,
+                    'TelNo': Poi.TelNo,
+                    'FaxNo': Poi.FaxNo,
+                    'MobileNo': Poi.MobileNo,
+                    'HasParkig': Poi.HasParkig,
+                    'IsAcceptCreditCard': true,
+                    'IsSuitableForGroup': true,
+                    'IsSuitableForKid': true,
+                    'IsAcceptAdvanceReserve': false
                 }
             },
-            function (error, UpdateStaff) {
+            function (error, UpdatePoi) {
                 if (error) throw error
-                // console.log(staff);
-                res.json(UpdateStaff);
+                res.json(UpdatePoi);
             });
 });
 
-router.get('/DeletePoi/:PoiId', function(req, res) {
+router.get(config.url.poi.deletePoiByPoiId, function(req, res) {
 	var PoiId = req.params.PoiId;
     var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiId.toString());
-    db.collection(config.mongodb.poi)
+    var o_id = bson.BSONPure.ObjectID(PoiId.toString());
+
+    db.collection(config.mongodb.poi.name)
         .remove({
             _id: o_id
         }, function (error, result) {

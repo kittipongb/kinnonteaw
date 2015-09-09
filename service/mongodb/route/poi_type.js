@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/LoadPoiType', function (req, res, next) {
-    db.collection(DB.COLLECTION_POI_TYPE)
+    db.collection(config.mongodb.poi_type.name)
         .find()
         .toArray(function (err, poi_types) {
             console.log(poi_types);
@@ -18,9 +18,9 @@ router.get('/LoadPoiType', function (req, res, next) {
 
 router.get('/LoadPoiTypeById/:PoiTypeId', function (req, res) {
 	var PoiTypeId = req.params.PoiTypeId;
-	var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiTypeId.toString());
-	db.collection(DB.COLLECTION_POI_TYPE)
+	
+    var o_id = bson.BSONPure.ObjectID(PoiTypeId.toString());
+	db.collection(config.mongodb.poi_type.name)
 		.findOne({
 			'_id' : o_id
 		}, function (err, poi_type) {
@@ -36,12 +36,14 @@ router.get('/LoadPoiTypeById/:PoiTypeId', function (req, res) {
 });
 
 // Create Poi Type
-router.get('/CreatePoiType', function (req, res, next) {
-    var poitype = {
-        PoiTypeName: 'TestInsertPoiType'
-    };
+router.post('/CreatePoiType', function (req, res, next) {
+    var PoiType = req.body;
+    var createDate = new Date ();
+    createDate.setHours ( createDate.getHours() + 7 );// GMT Bangkok +7
+    PoiType.CreateDate = createDate;
+    PoiType.UpdateDate = createDate;
     collection = db
-        .collection(DB.COLLECTION_POI_TYPE)
+        .collection(config.mongodb.poi_type.name)
         .insert(poitype, function (error, result) {
             if (error) throw error
 
@@ -52,17 +54,20 @@ router.get('/CreatePoiType', function (req, res, next) {
 router.post('/UpdatePoiType/:PoiTypeId', function(req, res){
     var PoiType = req.body;
     var id = PoiType._id;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(id.toString());
-    console.log('type 1 ' + id);
-    db.collection(DB.COLLECTION_POI_TYPE)
+
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    var updateDate = new Date ();
+    updateDate.setHours ( updateDate.getHours() + 7 );// GMT Bangkok +7
+    db.collection(config.mongodb.poi_type.name)
         .update({
                 '_id': o_id
             }, {
                 $set: {
-                //    'ProductTypeNameTh': ProductType.ProductTypeNameTh,
-                //    'ProductTypeNameEn': ProductType.ProductTypeNameEn,
-                //    'ProductTypeNameCn': ProductType.ProductTypeNameCn
+                    'PoiTypeNameTh' : PoiType.PoiTypeNameTh,
+                    'PoiTypeNameEn' : PoiType.PoiTypeNameEn,
+                    'PoiTypeNameJp' : PoiType.PoiTypeNameJp,
+                    'PoiSubTypeId' : PoiType.PoiSubTypeId,
+                    'UpdateDate' : updateDate
                 }
             },
             function (error, UpdatePoiType) {
@@ -71,12 +76,11 @@ router.post('/UpdatePoiType/:PoiTypeId', function(req, res){
             });
 });
 
-router.get('/DeletePoi/:PoiTypeId', function(req, res) {
+router.get('/DeletePoiType/:PoiTypeId', function(req, res) {
     var PoiTypeId = req.params.PoiTypeId;
     console.log('create Poi Type ' + PoiTypeId);
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiTypeId.toString());
-    db.collection(DB.COLLECTION_POI_TYPE)
+    var o_id = bson.BSONPure.ObjectID(PoiTypeId.toString());
+    db.collection(config.mongodb.poi_type.name)
         .remove({
             _id: o_id
         }, function (error, result) {

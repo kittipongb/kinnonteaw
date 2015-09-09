@@ -109,6 +109,13 @@
 			"updateRole" : "/UpdateRole",
 			"deleteRoleByRoleId" : "/DeleteRole/:RoleId"
 		},
+		"staff" : {
+			"home" : "/",
+			"loadAllStaff" : "/LoadStaff",
+			"createStaff" : "/CreateStaff",
+			"updateStaff" : "/UpdateStaff",
+			"deleteStaffByStaffId" : "/DeleteStaff/:StaffId"
+		},
 		"review" : {
 			"home" : "/",
 			"loadReviewByPoiId":"/LoadReviewByUserId/:UserId",

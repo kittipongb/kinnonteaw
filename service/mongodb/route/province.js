@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/LoadProvince', function (req, res) {
-    db.collection(DB.COLLECTION_PROVINCE)
+    db.collection(config.mongodb.province.name)
         .find({
         	 "$query":{}, "$orderby":{ "Province": 1 }
         })

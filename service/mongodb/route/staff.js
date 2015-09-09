@@ -7,20 +7,19 @@ router.get('/', function(req, res){
 
 router.get('/LoadStaff', function (req, res, next) {
     collection = db
-        .collection(DB.COLLECTION_STAFF)
+        .collection(config.mongodb.staff.name)
         .find()
         .toArray(function (err, staffs) {
             console.log(staffs);
             res.json(staffs);
-            //    db.close();
         });
 });
 
 router.get('/LoadStaffById/:StaffId', function (req, res) {
 	var StaffId = req.params.StaffId;
-	var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(StaffId.toString());
-	db.collection(DB.COLLECTION_STAFF)
+
+    var o_id = bson.BSONPure.ObjectID(StaffId.toString());
+	db.collection(config.mongodb.staff.name)
 		.findOne({
 			'_id' : o_id
 		}, function (err, staff) {
@@ -38,7 +37,7 @@ router.get('/LoadStaffById/:StaffId', function (req, res) {
 router.post('/CreateStaff', function (req, res) {
 	var Staff = req.body;
 	console.log('create staff ' + Staff);
-    db.collection(DB.COLLECTION_STAFF)
+    db.collection(config.mongodb.staff.name)
         .insert(Staff,
             function (error, NewStaff) {
                 if (error) throw error
@@ -49,17 +48,21 @@ router.post('/CreateStaff', function (req, res) {
 router.post('/UpdateStaff', function(req ,res) {
 	var Staff = req.body;
 	var id = Staff._id;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(id.toString());
-    console.log('type 1 ' + id);
-    db.collection(DB.COLLECTION_STAFF)
+
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    db.collection(config.mongodb.staff.name)
         .update({
                 '_id': o_id
             }, {
                 $set: {
-                //    'ProductTypeNameTh': ProductType.ProductTypeNameTh,
-                //    'ProductTypeNameEn': ProductType.ProductTypeNameEn,
-                //    'ProductTypeNameCn': ProductType.ProductTypeNameCn
+                    'Firstname' : Staff.Firstname,
+                    'Lastname' : Staff.Firstname,
+                    'Gender' : Staff.Firstname,
+                    'Age' : Staff.Firstname,
+                    'Address' : Staff.Firstname,
+                    'Status' : Staff.Firstname,
+                    'BirthDate' : Staff.Firstname,
+                    'Title' : Staff.Title
                 }
             },
             function (error, UpdateStaff) {
@@ -72,9 +75,9 @@ router.post('/UpdateStaff', function(req ,res) {
 router.get('/DeleteStaff/:StaffId', function(req, res) {
 	var StaffId = req.params.StaffId;
     console.log('create staff ' + StaffId);
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(StaffId);
-    db.collection(DB.COLLECTION_STAFF)
+
+    var o_id = bson.BSONPure.ObjectID(StaffId.toString());
+    db.collection(config.mongodb.staff.name)
         .remove({
             _id: o_id
         }, function (error, result) {

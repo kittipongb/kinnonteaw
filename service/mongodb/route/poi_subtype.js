@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/LoadPoiSubType', function (req, res, next) {
-    db.collection(DB.COLLECTION_POI_SUBTYPE)
+    db.collection(config.mongodb.poi_subtype.name)
         .find()
         .toArray(function (err, poi_subtypes) {
             console.log(poi_subtypes);
@@ -13,9 +13,9 @@ router.get('/LoadPoiSubType', function (req, res, next) {
 
 router.get('/LoadPoiSubTypeById/:PoiSubTypeId', function (req, res) {
     var PoiSubTypeId = req.params.PoiSubTypeId;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiSubTypeId.toString());
-    db.collection(DB.COLLECTION_POI_SUBTYPE)
+
+    var o_id = bson.BSONPure.ObjectID(PoiSubTypeId.toString());
+    db.collection(config.mongodb.poi_subtype.name)
         .findOne({
             '_id' : o_id
         }, function (err, poi_subtype) {
@@ -32,10 +32,13 @@ router.get('/LoadPoiSubTypeById/:PoiSubTypeId', function (req, res) {
 
 // Create Poi Sub Type
 router.get('/CreatePoiSubType', function (req, res, next) {
-    var poisubtype = {
-        PoiSubTypeName: 'TestInsert'
-    };
-    db.collection(DB.COLLECTION_POI_SUBTYPE)
+    var PoiSubType = req.body;
+
+    var createDate = new Date ();
+    createDate.setHours ( createDate.getHours() + 7 );// GMT Bangkok +7
+    PoiSubType.CreateDate = createDate;
+    PoiSubType.UpdateDate = createDate;
+    db.collection(config.mongodb.poi_subtype.name)
         .insert(poisubtype, function (error, result) {
             if (error) throw error
 
@@ -46,16 +49,20 @@ router.get('/CreatePoiSubType', function (req, res, next) {
 
 // Update Poi Sub Type
 router.get('/UpdatePoiSubType', function (req, res, next) {
-    var id = '552e30e5a15b8e58197ff0b3';
-    //  ObjectId("552e30e5a15b8e58197ff0b3")
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(id);
-    db.collection(DB.COLLECTION_POI_SUBTYPE)
+    var PoiSubType = req.body;
+    var id = PoiSubType._id;
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    var updateDate = new Date ();
+    updateDate.setHours ( updateDate.getHours() + 7 );// GMT Bangkok +7
+    db.collection(config.mongodb.poi_subtype.name)
         .update({
                 '_id': o_id
             }, {
                 $set: {
-                    'PoiSubTypeName': 'WOOOOOOOOOOOOOO'
+                    'PoiSubTypeNameTh': PoiSubType.PoiSubTypeNameTh,
+                    'PoiSubTypeNameEn': PoiSubType.PoiSubTypeNameEn,
+                    'PoiSubTypeNameJp': PoiSubType.PoiSubTypeNameJp,
+                    'UpdateDate' : updateDate
                 }
             },
             function (error, result) {
@@ -68,9 +75,8 @@ router.get('/UpdatePoiSubType', function (req, res, next) {
 router.get('/DeletePoiSubType/:PoiSubTypeId', function (req, res) {
     var PoiSubTypeId = req.params.PoiSubTypeId;
     console.log('create poi subtype ' + PoiSubTypeId);
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiSubTypeId.toString());
-    db.collection(DB.COLLECTION_POI_SUBTYPE)
+    var o_id = bson.BSONPure.ObjectID(PoiSubTypeId.toString());
+    db.collection(config.mongodb.poi_subtype.name)
         .remove({
             _id: o_id
         }, function (error, result) {

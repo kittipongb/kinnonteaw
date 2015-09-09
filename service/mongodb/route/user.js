@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/LoadUser', function (req, res, next) {
-    db.collection(DB.COLLECTION_USER)
+    db.collection(config.mongodb.user.name)
         .find()
         .toArray(function (err, users) {
             console.log(users);
@@ -17,18 +17,16 @@ router.get('/LoadUser', function (req, res, next) {
 
 router.get('/LoadUserById/:UserId', function (req, res) {
 	var UserId = req.params.UserId;
-	var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(UserId.toString());
-	db.collection(DB.COLLECTION_USER)
+
+    var o_id = bson.BSONPure.ObjectID(UserId.toString());
+	db.collection(config.mongodb.user.name)
 		.findOne({
 			'_id' : o_id
 		}, function (err, user) {
 			if (err) {
 				console.log(err);
 			} else {
-				// call your callback with no error and the data
                 console.log(user);
-                //     callback(null, doc);
                 res.json(user);
 			}
 		});
@@ -37,7 +35,7 @@ router.get('/LoadUserById/:UserId', function (req, res) {
 router.post('/CreateUser', function (req, res) {
 	var User = req.body;
 	console.log('create user ' + User);
-    db.collection(DB.COLLECTION_USER)
+    db.collection(config.mongodb.user.name)
         .insert(User,
             function (error, NewUser) {
                 if (error) throw error
@@ -48,17 +46,19 @@ router.post('/CreateUser', function (req, res) {
 router.post('/UpdateUser', function(req ,res) {
 	var User = req.body;
 	var id = User._id;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(id.toString());
-    console.log('type 1 ' + id);
-    db.collection(DB.COLLECTION_USER)
+
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    db.collection(config.mongodb.user.name)
         .update({
                 '_id': o_id
             }, {
                 $set: {
-                //    'ProductTypeNameTh': ProductType.ProductTypeNameTh,
-                //    'ProductTypeNameEn': ProductType.ProductTypeNameEn,
-                //    'ProductTypeNameCn': ProductType.ProductTypeNameCn
+                    'DisplayName' : User.DisplayName,
+                    'Email' : User.Email,
+                    'Password' : User.Password,
+                    'RoleId' : User.RoleId,
+                    'RefId' : User.RefId,
+                    'Via' : User.Via
                 }
             },
             function (error, UpdateUser) {
@@ -68,12 +68,11 @@ router.post('/UpdateUser', function(req ,res) {
             });
 });
 
-router.get('/DeleteStaff/:StaffId', function(req, res) {
+router.get('/DeleteUser/:UserId', function(req, res) {
 	var UserId = req.params.UserId;
-    console.log('create staff ' + UserId);
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(UserId);
-    db.collection(DB.COLLECTION_USER)
+    
+    var o_id = bson.BSONPure.ObjectID(UserId.toString());
+    db.collection(config.mongodb.user.name)
         .remove({
             _id: o_id
         }, function (error, result) {

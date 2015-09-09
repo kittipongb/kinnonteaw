@@ -5,11 +5,12 @@ var bodyParser = require('body-parser');
 global.config = require('../mongodb_config.json');
 global.appRoot = require('app-root-path');
 global.mongodb = require('mongodb');
-
+global.bson = require('bson');
 global.db;
 global.collection;
 
 //app.use();
+var cors = require('cors');
 var index = require('./route/index');
 var poi = require('./route/poi');
 var poi_type = require('./route/poi_type');
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+app.use(cors());
 app.use('/', index);
 app.use('/poi', poi);
 app.use('/poi_type', poi_type);
@@ -61,8 +63,10 @@ mongodb.MongoClient.connect(config.connection_url + config.collection_name, func
  
 mongodb.MongoClient.connect("mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.com:35713/knt", function (err, database) {
     if (err) console.log(err, err.stack.split("\n"));
-    console.log(database);
-    db = database;
+    if (database) {
+	    console.log("db not null " + database);
+	    db = database;
+	}
 });
 
 

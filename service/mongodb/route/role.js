@@ -17,8 +17,7 @@ router.get('/LoadRole', function (req, res, next) {
 
 router.get('/LoadRoleById/:RoleId', function (req, res) {
 	var PoiId = req.params.PoiId;
-	var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiId.toString());
+    var o_id = bson.BSONPure.ObjectID(PoiId.toString());
 	db.collection(config.mongodb.role.name)
 		.findOne({
 			'_id' : o_id
@@ -34,10 +33,10 @@ router.get('/LoadRoleById/:RoleId', function (req, res) {
 		});
 });
 
-router.post('/CreatePoi', function(req, res) {
+router.post('/CreateRole', function(req, res) {
 	var Poi = req.body;
 	console.log('create poi ' + poi);
-    db.collection(DB.COLLECTION_POI)
+    db.collection(config.mongodb.role.name)
         .insert(Poi,
             function (error, NewPoi) {
                 if (error) throw error
@@ -46,35 +45,30 @@ router.post('/CreatePoi', function(req, res) {
 
 });
 
-router.post('/UpdatePoi', function(req, res){
-	var Poi = req.body;
-	var id = Poi._id;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(id.toString());
-    console.log('type 1 ' + id);
-    db.collection(DB.COLLECTION_POI)
+router.post('/UpdateRole', function(req, res){
+	var Role = req.body;
+	var id = Role._id;
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    db.collection(config.mongodb.role.name)
         .update({
                 '_id': o_id
             }, {
                 $set: {
-                //    'ProductTypeNameTh': ProductType.ProductTypeNameTh,
-                //    'ProductTypeNameEn': ProductType.ProductTypeNameEn,
-                //    'ProductTypeNameCn': ProductType.ProductTypeNameCn
+                    'RoleName' : Role.Name
                 }
             },
-            function (error, UpdateStaff) {
+            function (error, UpdateRole) {
                 if (error) throw error
-                // console.log(staff);
-                res.json(UpdateStaff);
+                res.json(UpdateRole);
             });
 });
 
-router.get('/DeletePoi/:PoiId', function(req, res) {
-	var PoiId = req.params.PoiId;
-    console.log('create poi ' + PoiId);
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(PoiId.toString());
-    db.collection(DB.COLLECTION_POI)
+router.get('/DeleteRole/:RoleId', function(req, res) {
+	var RoleId = req.params.RoleId;
+    console.log('delete role ' + RoleId);
+
+    var o_id = bson.BSONPure.ObjectID(RoleId.toString());
+    db.collection(config.mongodb.role.name)
         .remove({
             _id: o_id
         }, function (error, result) {
@@ -83,4 +77,5 @@ router.get('/DeletePoi/:PoiId', function(req, res) {
             res.json(result);
         });
 });
+
 module.exports = router;

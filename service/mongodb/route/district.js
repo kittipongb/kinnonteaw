@@ -8,9 +8,9 @@ router.get('/', function (req, res, next) {
 router.get('/LoadDistrictByProvinceId/:ProvinceId', function (req, res) {
     console.log('district.js');
     var ProvinceId = req.params.ProvinceId;
-    var BSON = mongodb.BSONPure;
-    var o_id = new BSON.ObjectID(ProvinceId.toString());
-    db.collection(DB.COLLECTION_DISTRICT)
+   
+    var o_id = bson.BSONPure.ObjectID(ProvinceId.toString());
+    db.collection(config.mongodb.district.name)
         .find({
             "$query":{'ProvinceId' : o_id}, "$orderby":{ "District": 1 }
         })

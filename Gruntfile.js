@@ -46,7 +46,7 @@ module.exports = function (grunt) {
           'server.js',
           'service/**.js'
         ],
-        tasks: ["express:dev"],
+        tasks: ['express:dev'],
         options: {
           spawn: false,
           livereload: true
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/assets/less/**/*.less',
           '<%= yeoman.app %>/scripts/**/*.less'
         ],
-        tasks: ["less:dev"],
+        tasks: ['less:dev'],
         options: {
           livereload: true
         }

@@ -27,7 +27,7 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/poiview', {
+      .when('/poiview/:poiId?', {
         templateUrl: 'views/poiview.html',
         controller: 'PoiViewCtrl'
       })

@@ -8,12 +8,14 @@
  * Controller of the kinnonteawApp
  */
 angular.module('kinnonteawApp')
-  .controller('MainCtrl', ['$scope', function ($scope) {
+  .controller('MainCtrl', ['$scope', 'contentBlockService', function ($scope, contentBlockService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    contentBlockService.fetch(); //TODO: should utilize for performance
 
     $scope.IsVisibleDisplayModal = false;
     $scope.Title = 'You typed Search!';
@@ -31,7 +33,7 @@ angular.module('kinnonteawApp')
         }
         if (searchString.length > 0) {
             $scope.IsVisibleDisplayModal = true;
-            $scope.Title = $scope.TitleFix + " " + searchString.join(',');
+            $scope.Title = $scope.TitleFix + ' ' + searchString.join(',');
         } else {
             $scope.IsVisibleDisplayModal = false;
         }

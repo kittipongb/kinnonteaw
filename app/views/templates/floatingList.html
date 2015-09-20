@@ -1,5 +1,5 @@
 <div class="floating-list">
-	<div ng-repeat="(key, value) in poiList.blocks" class="block masonry-brick">
+	<div ng-repeat="(key, value) in poiList" class="block masonry-brick">
 		<div class="box-recommended restaurant"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" ></div> 
 				
 		<a href="{{value.ImageLink}}"><img class="image-block" ng-src="{{value.ImageLink}}"></a>
@@ -10,6 +10,6 @@
 		<div class="font-normal-gray block-padtop">
 		<p>{{value.Description}}</p>
 		</div>
-		<div class="block-link"><a href="/#/poiview?poi={{value.Id}}"><img src="http://www.twosave.com/common/images/icon-more-green.png" border="0" alt=""></a></div>
+		<div class="block-link"><a href="/#/poiview/{{value.Id}}"><img src="http://www.twosave.com/common/images/icon-more-green.png" border="0" alt=""></a></div>
 	</div>
 </div>

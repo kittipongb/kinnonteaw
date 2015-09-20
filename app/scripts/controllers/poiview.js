@@ -8,6 +8,8 @@
  * Controller of the kinnonteawApp
  */
 angular.module('kinnonteawApp')
-  .controller('PoiViewCtrl', ['$scope', function ($scope) {
-    $scope.greeting = 'Hello from PoiViewCtrl';
+  .controller('PoiViewCtrl', ['$scope', '$routeParams', 'contentBlockService', function ($scope, $routeParams, contentBlockService) {
+  	contentBlockService.fetch(); //TODO: should utilize for performance
+  	$scope.Id = $routeParams.poiId;
+    $scope.header = 'Header from PoiViewCtrl';
   }]);

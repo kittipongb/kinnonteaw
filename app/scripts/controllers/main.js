@@ -15,7 +15,14 @@ angular.module('kinnonteawApp')
       'Karma'
     ];
 
-    contentBlockService.fetch(); //TODO: should utilize for performance
+    if (!contentBlockService.dataReady()) {
+        contentBlockService.fetch().then(function () {
+            $scope.dataReady = true;
+        });
+    }
+    else {
+        $scope.dataReady = true;
+    }
 
     $scope.IsVisibleDisplayModal = false;
     $scope.Title = 'You typed Search!';

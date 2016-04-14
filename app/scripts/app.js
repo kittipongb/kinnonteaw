@@ -10,6 +10,7 @@
  */
 angular
   .module('kinnonteawApp', [
+    'ui.bootstrap',
     'ngAnimate',
     'ngCookies',
     'ngResource',

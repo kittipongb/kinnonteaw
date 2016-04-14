@@ -3,27 +3,46 @@
 angular.module('kinnonteawApp').factory('contentBlockService', ['$http', '$q',
     function($http, $q) {
         var content = {};
+        var dataLoaded = false;
 
         var query = function () {
             var deferred = $q.defer();
             $http.get('http://localhost:3030/poi/LoadPoi').success(function (data) { //TODO: should refer with context path
                 content.blocks = data;
+                // content.blocks = getMockData();
+                //TODO: should process data?
+                dataLoaded = true;
                 deferred.resolve(true);
             }).error(function (data, status) {
                 console.log('Error: ' + status);
-                deferred.error(false);
+                dataLoaded = false;
+                deferred.reject(false);
             });
 
-            //return deferred.promise;
+            return deferred.promise;
+        };
 
-            content.blocks = [
+        var getAllPoi = function () {
+            return content.blocks;
+        };
+
+        var getPoi = function (poiId) {
+            return _.findWhere(content.blocks, {Id: poiId});
+        };
+
+        var isDataLoaded = function () {
+            return dataLoaded;
+        };
+
+        var getMockData = function () {
+            return [
             {
                 Id: '1', // should be MD5?
                 Name: 'ร้านกาแฟ Think Tank',
                 Location: 'สาธร กรุงเทพ',
                 Description: 'นั่งชิลๆ ได้ทั้งวัน มี Wifi มีปลั๊ก',
                 Type: 'eat',
-                ImageLink: 'assets/images/00001.jpg',
+                ImageLink: 'assets/images/00002.jpg',
                 Rating: '4',
                 LatLong: '',
                 ReviewsQuantity: '42',
@@ -38,7 +57,7 @@ angular.module('kinnonteawApp').factory('contentBlockService', ['$http', '$q',
                 Location: 'อยุธยา',
                 Description: 'วัดสวย และยิ่งใหญ่',
                 Type: 'place',
-                ImageLink: 'assets/images/00002.jpg',
+                ImageLink: 'assets/images/00001.jpg',
                 Rating: '4.5',
                 LatLong: '14.3432986, 100.5413961',
                 ReviewsQuantity: '16',
@@ -169,18 +188,11 @@ angular.module('kinnonteawApp').factory('contentBlockService', ['$http', '$q',
             }];
         };
 
-        var getAllPoi = function () {
-            return content.blocks;
-        };
-
-        var getPoi = function (poiId) {
-            return _.findWhere(content.blocks, {Id: poiId});
-        };
-
         return {
             fetch: query,
             getAll: getAllPoi,
-            getId: getPoi
+            getId: getPoi,
+            dataReady: isDataLoaded
         };
         
     }]);

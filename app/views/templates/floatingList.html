@@ -1,15 +1,18 @@
 <div class="floating-list">
 	<div ng-repeat="(key, value) in poiList" class="block masonry-brick">
-		<div class="box-recommended restaurant"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" ></div> 
-				
-		<a href="{{value.ImageLink}}"><img class="image-block" ng-src="{{value.ImageLink}}"></a>
+		<div uib-collapse="isCollapsed">
+			<div class="box-recommended restaurant"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" ></div> 
+					
+			<a href="{{value.ImageLink}}"><img class="image-block" ng-src="{{value.ImageLink}}"></a>
 
-		<div class="clear padding-top10"></div>
-		<h4 class="font-title block-padtop">{{value.Name}} Rating: {{value.Rating}}</h1>
-		<h5 class="font-subtitle-blue block-padtop">{{value.Location}}</h2>
-		<div class="font-normal-gray block-padtop">
-		<p>{{value.Description}}</p>
+			<div class="clear padding-top10"></div>
+			<h4 class="font-title block-padtop">{{value.PlaceNameTH}} Rating: {{value.Rating}}</h1>
+			<h5 class="font-subtitle-blue block-padtop">{{value.District}} - {{value.Province}} ({{value.TelNo}})</h2>
+			<div class="font-normal-gray block-padtop">
+			<p>{{value.Description}}</p>
+			</div>
+			<div class="block-link"><a href="/#/poiview/{{value._id}}"><img src="http://www.twosave.com/common/images/icon-more-green.png" border="0" alt=""></a></div>
 		</div>
-		<div class="block-link"><a href="/#/poiview/{{value.Id}}"><img src="http://www.twosave.com/common/images/icon-more-green.png" border="0" alt=""></a></div>
+		<button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
 	</div>
 </div>

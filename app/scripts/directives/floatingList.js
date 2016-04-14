@@ -2,7 +2,6 @@
 
 angular.module('kinnonteawApp')
 .controller('floatingListController', ['$scope', 'contentBlockService', function ($scope, contentBlockService) {
-	//TODO: Mock POIList
 	$scope.poiList = contentBlockService.getAll();
 }])
 .directive('floatingList', function () {

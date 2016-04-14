@@ -1,7 +1,7 @@
 <div id="container">
 	<div id="header"><p>{{header}}</p></div>
 	<div id="left-sidebar"></div>
-	<div id="center">
+	<div id="center" ng-if="dataReady">
 		<poi-info poi-id="{{Id}}"></poi-info>
 		<map-canvas></map-canvas>
 	</div>

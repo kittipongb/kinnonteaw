@@ -9,7 +9,14 @@
  */
 angular.module('kinnonteawApp')
   .controller('PoiViewCtrl', ['$scope', '$routeParams', 'contentBlockService', function ($scope, $routeParams, contentBlockService) {
-  	contentBlockService.fetch(); //TODO: should utilize for performance
+  	if (!contentBlockService.dataReady()) {
+        contentBlockService.fetch().then(function () {
+            $scope.dataReady = true;
+        });
+    }
+    else {
+        $scope.dataReady = true;
+    }
   	$scope.Id = $routeParams.poiId;
     $scope.header = 'Header from PoiViewCtrl';
   }]);

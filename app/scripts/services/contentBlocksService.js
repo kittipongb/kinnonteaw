@@ -27,7 +27,7 @@ angular.module('kinnonteawApp').factory('contentBlockService', ['$http', '$q',
         };
 
         var getPoi = function (poiId) {
-            return _.findWhere(content.blocks, {Id: poiId});
+            return _.findWhere(content.blocks, {_id: poiId});
         };
 
         var isDataLoaded = function () {

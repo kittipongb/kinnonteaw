@@ -13,9 +13,14 @@ angular.module('kinnonteawApp')
 })
 .controller('mapCanvas', ['$scope', 'contentBlockService' , function ($scope, contentBlockService) {
 	$scope.poiData = contentBlockService.getId($scope.poiId);
-	$scope.latLong = $scope.poiData.CoOrdinate;
+	$scope.latLng = $scope.poiData.LatLng;
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: {lat: $scope.latLong.Latitude, lng: $scope.latLong.Longitude},
-        zoom: 8
+        center: $scope.latLng,
+        zoom: 17
       });
+    $scope.marker = new google.maps.Marker({
+    	animation: google.maps.Animation.DROP,
+	    position: $scope.latLng,
+	    map: $scope.map
+  });
 }]);

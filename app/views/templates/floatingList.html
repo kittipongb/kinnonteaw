@@ -1,7 +1,7 @@
 <div class="floating-list">
 	<div ng-repeat="(key, value) in poiList" class="block masonry-brick">
 		<div uib-collapse="isCollapsed">
-			<div class="box-recommended restaurant"><img src="http://www.twosave.com/common/images/icon-food-very-delicious.png" ></div> 
+			<div class="box-recommended very-delicious"></div> 
 					
 			<!-- <a href="{{value.ImageLink}}"><img class="image-block" ng-src="{{value.ImageLink}}"></a> -->
 			<a href="assets/images/00002.jpg"><img class="image-block" ng-src="assets/images/00002.jpg"></a>
@@ -14,6 +14,8 @@
 			</div>
 			<div class="block-link"><a href="/#/poiview/{{value._id}}"><img src="http://www.twosave.com/common/images/icon-more-green.png" border="0" alt=""></a></div>
 		</div>
-		<button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+		<div class="more-details">
+			<div class="glyphicon glyphicon-search" ng-click="isCollapsed = !isCollapsed"></div>
+		</div>
 	</div>
 </div>

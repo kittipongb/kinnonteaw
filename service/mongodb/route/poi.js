@@ -68,7 +68,7 @@ router.post('/UpdateMergePoi', function(req, res) {
     var id = Poi._id;
     var o_id = bson.BSONPure.ObjectID(id.toString());
     
-
+    
 
 });
 

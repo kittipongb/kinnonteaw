@@ -1,9 +1,11 @@
 <div id="container">
 	<div id="header"><p>{{header}}</p></div>
-	<div id="left-sidebar"></div>
-	<div id="center" ng-if="dataReady">
-		<poi-info poi-id="{{Id}}"></poi-info>
-		<map-canvas></map-canvas>
+	<div class="row">
+		<div id="left-sidebar" class="col-md-2"></div>
+		<div id="center" class="col-md-6" ng-if="dataReady" style="width:100%">
+			<poi-info poi-id="{{Id}}"></poi-info>
+			<map-canvas poi-id="{{Id}}"></map-canvas>
+		</div>
+		<div id="right-sidebar" class="col-md-2"></div>
 	</div>
-	<div id="right-sidebar"></div>
 </div>

@@ -57,20 +57,15 @@ router.get('/UpdatePoiSubType', function (req, res, next) {
     db.collection(config.mongodb.poi_subtype.name)
         .update({
                 '_id': o_id
-            }, {
-                $set: {
-                    'PoiSubTypeNameTh': PoiSubType.PoiSubTypeNameTh,
-                    'PoiSubTypeNameEn': PoiSubType.PoiSubTypeNameEn,
-                    'PoiSubTypeNameJp': PoiSubType.PoiSubTypeNameJp,
-                    'UpdateDate' : updateDate
-                }
-            },
-            function (error, result) {
+            }, 
+            PoiSubType
+            , function (error, result) {
                 if (error)
                     throw error
                 console.log("update poi sub type success ?? " + result);
             });
 });
+
 
 router.get('/DeletePoiSubType/:PoiSubTypeId', function (req, res) {
     var PoiSubTypeId = req.params.PoiSubTypeId;

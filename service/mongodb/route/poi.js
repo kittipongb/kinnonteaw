@@ -63,15 +63,6 @@ router.post('/UpdateReplacePoi', function(req, res){
             });
 });
 
-router.post('/UpdateMergePoi', function(req, res) {
-    var Poi = req.body;
-    var id = Poi._id;
-    var o_id = bson.BSONPure.ObjectID(id.toString());
-    
-    
-
-});
-
 router.get(config.url.poi.deletePoiByPoiId, function(req, res) {
 	var PoiId = req.params.PoiId;
     var BSON = mongodb.BSONPure;

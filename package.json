@@ -1,7 +1,9 @@
 {
   "name": "kinnonteaw",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.11.1"
+  },
   "repository": {
     "lodash": "^2.4.1",
     "moment": "^2.8.2",

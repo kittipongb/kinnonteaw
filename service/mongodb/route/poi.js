@@ -47,7 +47,7 @@ router.post(config.url.poi.createPoi, function(req, res) {
 
 });
 
-router.post(config.url.poi.updatePoi, function(req, res){
+router.post('/UpdateReplacePoi', function(req, res){
 	var Poi = req.body;
 	var id = Poi._id;
     var o_id = bson.BSONPure.ObjectID(id.toString());
@@ -55,36 +55,21 @@ router.post(config.url.poi.updatePoi, function(req, res){
     db.collection(config.mongodb.poi.name)
         .update({
                 '_id': o_id
-            }, {
-                $set: {
-                    'PoiNameTh' : Poi.PoiNameTh,
-                    'PoiNameEn' : Poi.PoiNameEn,
-                    'PoiNameJp' : Poi.PoiNameJp,
-                    'Address' : Poi.Address,
-                    'Province': Poi.Province,
-                    'District': Poi.District,
-                    'SubDistrict': Poi.SubDistrict,
-                    'ZipCode': Poi.ZipCode,
-                    'PoiTypeId': Poi.PoiTypeId,
-                    'Latitude': Poi.Latitude,
-                    'Longitude': Poi.Longitude,
-                    'ReviewQuantity' : Poi.ReviewQuantity,
-                    'ImageQuantity' : Poi.ImageQuantity,
-                    'Rating': Poi.Rating,
-                    'TelNo': Poi.TelNo,
-                    'FaxNo': Poi.FaxNo,
-                    'MobileNo': Poi.MobileNo,
-                    'HasParkig': Poi.HasParkig,
-                    'IsAcceptCreditCard': true,
-                    'IsSuitableForGroup': true,
-                    'IsSuitableForKid': true,
-                    'IsAcceptAdvanceReserve': false
-                }
-            },
-            function (error, UpdatePoi) {
+            }, 
+            Poi
+            , function (error, UpdatePoi) {
                 if (error) throw error
                 res.json(UpdatePoi);
             });
+});
+
+router.post('/UpdateMergePoi', function(req, res) {
+    var Poi = req.body;
+    var id = Poi._id;
+    var o_id = bson.BSONPure.ObjectID(id.toString());
+    
+
+
 });
 
 router.get(config.url.poi.deletePoiByPoiId, function(req, res) {

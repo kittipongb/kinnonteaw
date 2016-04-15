@@ -62,7 +62,10 @@ mongodb.MongoClient.connect(config.connection_url + config.collection_name, func
 // Connect to MongoLab
  
 mongodb.MongoClient.connect("mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.com:35713/knt", function (err, database) {
-    if (err) console.log(err, err.stack.split("\n"));
+    if (err) {
+        console.log("database error");
+        console.log(err, err.stack.split("\n"));
+    }
     if (database) {
 	    console.log("db not null " + database);
 	    db = database;

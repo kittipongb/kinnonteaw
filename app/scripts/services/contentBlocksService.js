@@ -9,7 +9,7 @@ angular.module('kinnonteawApp').factory('contentBlockService', ['$http', '$q',
             var deferred = $q.defer();
             $http.get('http://localhost:3030/poi/LoadPoi').success(function (data) { //TODO: should refer with context path
                 content.blocks = data;
-                // content.blocks = getMockData();
+           //      content.blocks = getMockData();
                 //TODO: should process data?
                 dataLoaded = true;
                 deferred.resolve(true);

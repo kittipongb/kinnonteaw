@@ -19,5 +19,8 @@
     "lodash": "~3.10.1"
   },
   "appPath": "app",
-  "moduleName": "kinnonteawApp"
+  "moduleName": "kinnonteawApp",
+  "resolutions": {
+    "angular": "^1.5.0"
+  }
 }

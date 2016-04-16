@@ -51,7 +51,7 @@ router.post('/CreatePoiType', function (req, res, next) {
         });
 });
 
-router.post('/UpdatePoiType/:PoiTypeId', function(req, res){
+router.post('/UpdatePoiType', function(req, res){
     var PoiType = req.body;
     var id = PoiType._id;
 
@@ -61,16 +61,9 @@ router.post('/UpdatePoiType/:PoiTypeId', function(req, res){
     db.collection(config.mongodb.poi_type.name)
         .update({
                 '_id': o_id
-            }, {
-                $set: {
-                    'PoiTypeNameTh' : PoiType.PoiTypeNameTh,
-                    'PoiTypeNameEn' : PoiType.PoiTypeNameEn,
-                    'PoiTypeNameJp' : PoiType.PoiTypeNameJp,
-                    'PoiSubTypeId' : PoiType.PoiSubTypeId,
-                    'UpdateDate' : updateDate
-                }
-            },
-            function (error, UpdatePoiType) {
+            }, 
+            PoiType
+            , function (error, UpdatePoiType) {
                 if (error) throw error
                 res.json(UpdatePoiType);
             });

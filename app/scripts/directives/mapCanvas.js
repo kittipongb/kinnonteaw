@@ -14,7 +14,7 @@ angular.module('kinnonteawApp')
 .controller('mapCanvas', ['$scope', 'contentBlockService' , function ($scope, contentBlockService) {
 	$scope.poiData = contentBlockService.getId($scope.poiId);
 	$scope.latLng = $scope.poiData.LatLng;
-    $scope.map = new google.maps.Map(document.getElementById('map-canvas'), {
+    $scope.map = new google.maps.Map($.find('#map-canvas')[0], {
         center: $scope.latLng,
         zoom: 17
       });

@@ -45,6 +45,7 @@
             </ul>
           </div>
         </div>
+        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div>
       </div>
     </div>
 
@@ -58,6 +59,35 @@
       </div>
     </div>
 
+    <!-- Facebook SDK -->
+    <script>
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1187743387911345',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

@@ -22,6 +22,9 @@ module.exports = function (grunt) {
     distRoot: __dirname + '/dist'
   };
 
+  // Project configuration.
+  var pkg = require('./package.json');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -403,7 +406,68 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:panyaxbo/KZHWEB.git',
+          branch: 'gh-pages'
+        }
+      },
+      heroku: {
+        options: {
+          remote: 'git@heroku.com:kzh-parts.git',
+          branch: 'master',
+          tag: pkg.version
+        }
+      },
+      local: {
+        options: {
+          remote: '../',
+          branch: 'build'
+        }
+      }
+    },
+
+    ngconstant: {
+        options: {
+          space: '  ',
+          deps: ['ngLocale'],
+          wrap: '"use strict";\n\n {%= __ngModule %}',
+          name : 'CONFIG'
+        },
+        // Environment targets
+        development: {
+          options :{
+            dest: '<%= yeoman.app %>/constants/constants.js'
+          },
+          constants: {
+            ENV: {
+              name: 'development',
+              apiEndpoint: 'http://localhost:3030'
+            }
+          }
+        },
+        production: {
+          options: {
+            dest: '<%= yeoman.app %>/constants/constants.js'
+          },
+          constants: {
+            ENV: {
+              name: 'production',
+              apiEndpoint: 'https://kinnonteaw.herokuapp.com'
+            }
+          }
+        }
+      }
+
   });
 
 

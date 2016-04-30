@@ -24,6 +24,7 @@ var district = require('./route/district');
 var subdistrict = require('./route/subdistrict');
 var schema = require('./route/schema');
 var rest = require('./route/rest');
+var oauths = require('../oauth/oauths');
 
 //app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -44,6 +45,7 @@ app.use('/province', province);
 app.use('/district', district);
 app.use('/schema', schema);
 app.use('/rest', rest);
+app.use('/oauths', oauths);
 
 app.listen(config.nodejs_port, function () {
 	//console.log("Start server port " + config.nodejs_port + " is OK...");

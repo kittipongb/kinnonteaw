@@ -12,6 +12,8 @@
     <!-- endbuild -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css">
     <link rel="stylesheet" href="/assets/css/application.css">
     <!-- endbuild -->
   </head>
@@ -43,7 +45,16 @@
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
+            <ul class="nav nav-pills pull-right nav-header">
+            <li class="header-button">
+              <button id="LoginButton" class="btn btn-primary" data-toggle="modal" data-target="#LoginModal" ng-show="!IsLogin" >
+                  <span class="glyphicon glyphicon-log-in"></span> Log in
+              </button>
+            </li>
+          </ul>
           </div>
+
+
         </div>
 <!--         <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div> -->
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>

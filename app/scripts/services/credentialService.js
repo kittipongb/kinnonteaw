@@ -1,4 +1,5 @@
-app.service("CredentialService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
+'user strict'
+angular.module('kinnonteawApp').service("CredentialService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
     return {
     	LoadOAuth: function() {
     		var defer = $q.defer();

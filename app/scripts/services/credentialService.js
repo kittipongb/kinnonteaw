@@ -1,12 +1,12 @@
-'user strict'
+"use strict"
 angular.module('kinnonteawApp').service("CredentialService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
     return {
     	LoadOAuth: function() {
     		var defer = $q.defer();
 			var oauthURL = ENV.apiEndpoint + "/oauths/GetPublicKey";
+			console.log(oauthURL);
 		    $http.get(oauthURL)
 		    .success(function(data, status) {
-		    //    OAuth.initialize(data);
 		    	  defer.resolve(data);
 		    })
 		    .error(function(error, status) {

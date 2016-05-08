@@ -446,7 +446,7 @@ module.exports = function (grunt) {
         // Environment targets
         development: {
           options :{
-            dest: '<%= yeoman.app %>/constants/constants.js'
+            dest: '<%= yeoman.app %>/scripts/constants/constants.js'
           },
           constants: {
             ENV: {
@@ -457,7 +457,7 @@ module.exports = function (grunt) {
         },
         production: {
           options: {
-            dest: '<%= yeoman.app %>/constants/constants.js'
+            dest: '<%= yeoman.app %>/scripts/constants/constants.js'
           },
           constants: {
             ENV: {
@@ -478,6 +478,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development',
       'wiredep',
       'concurrent:server',
       'less:dev',

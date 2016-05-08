@@ -3,6 +3,8 @@ var router = express.Router();
 var oauthConfig = require('./oauth-config.js');
 
 router.get('/GetPublicKey', function(req, res) {
+	console.log(oauthConfig.oauth.Public_Key);
 	res.json(oauthConfig.oauth.Public_Key);
 });
+
 module.exports = router;

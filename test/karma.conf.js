@@ -28,6 +28,7 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/lodash/lodash.js',
       'bower_components/jquery-ui/jquery-ui.js',
       'bower_components/angular-mocks/angular-mocks.js',

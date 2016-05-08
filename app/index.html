@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="/assets/css/application.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="kinnonteawApp" class="body-container">
+  <body ng-app="kinnonteawApp" class="body-container" ng-controller="MainCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" >
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -66,10 +66,12 @@
                                     <center>
                                       <div class="row">
                                         <div class="col-md-4">
-                                          <a href="#" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                                          <a href="" class="btn btn-block btn-social btn-facebook" ng-click="LoginWithSocial('facebook')">
+                                          <i class="fa fa-facebook"></i> Facebook</a>
                                         </div>
                                         <div class="col-md-4">
-                                          <a href="#" class="btn btn-block btn-social btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+                                          <a href="" class="btn btn-block btn-social btn-twitter" ng-click="LoginWithSocial('twitter')">
+                                          <i class="fa fa-twitter"></i> Twitter</a>
                                         </div>
                                       </div>
                                     </center>
@@ -206,7 +208,6 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -214,6 +215,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <!-- endbower -->
@@ -226,6 +228,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/poiview.js"></script>
+        <script src="scripts/constants/constants.js"></script>
         <script src="scripts/services/contentBlocksService.js"></script>
         <script src="scripts/services/credentialService.js"></script>
         <script src="scripts/directives/floatingList.js"></script>

@@ -1,12 +1,30 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res){
-	res.sendFile(appRoot + '/app/index.html');
+router.get('/LoadReview', function(req, res){
+	db.collection('Review')
+        .find({})
+        .toArray(function (err, reviews) {
+            if (err) {
+
+            } else {
+                console.log(reviews);
+                res.json(reviews);
+            }
+        });
 });
 
 router.get('/LoadReviewByPoiId/:PoiId', function(req, res) {
+    db.collection('Review')
+        .find({})
+        .toArray(function (err, reviews) {
+            if (err) {
 
+            } else {
+                console.log(reviews);
+                res.json(reviews);
+            }
+        });
 });
 
 // Create Review

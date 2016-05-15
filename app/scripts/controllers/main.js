@@ -154,16 +154,36 @@ angular.module('kinnonteawApp')
         }, function(error, status) {
 
         });
-     /*   var createAndCheckLofinSocialUrl = ENV.apiEndpoint + '/users/CreateAndUpdateWithSocial';
-        
-        $http.post(createAndCheckLofinSocialUrl, response)
-        .success(function (data, status, headers, config) {
-        })
-        .error(function (data, status, headers, config) {
-         
-        });*/
-     
     }
     
-
-  }]);
+    $scope.Logout = function() {
+      var int = 1;
+        swal({
+          title: "Are you sure?",
+          text: "คุณต้องการออกจากระบบ ใช่ หรือ ไม่?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#dd6b55",
+          confirmButtonText: "Yes, log out!",
+          cancelButtonText: "No, cancel please!",
+          closeOnConfirm: false,
+          closeOnCancel: false
+        },
+        function(isConfirm){
+            $scope.$apply(function() {
+              if (isConfirm) {
+                swal("Success", "Log out success", "success");
+                $scope.User = {};
+                $scope.Firstname = '';
+                $scope.Lastname = '';
+                $scope.IsLogin = false;
+                $scope.AddNoProfileUserImage();
+                $cookies.remove('User');
+              } else {
+                console.log('cancel');
+                swal("Cancelled", "Stay in system :)", "success");
+              }
+          });
+        });
+    }
+}]);

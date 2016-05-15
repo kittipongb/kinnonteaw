@@ -1,4 +1,27 @@
 <div>
 	this is review
 	<a ng-click="SaveArticle()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> ตั้งกระทู้</a>
+	<div class="row">
+		<div id="ViewReview" class="animated fadeIn" style="display: block">
+			<div class="row">
+				<div class="col-md-12"><h4>กระทู้ปักหมุด</h4></div>
+				<div class="col-md-12" class="table-responsive">
+					<table class="table table-condensed">
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><h4>กระทู้</h4></div>
+				<div class="col-md-12" ng-repeat="Review in Reviews">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-10">
+						<h5>{{Review.ReviewTitle}} </h5>
+						<p class="line-height">{{Review.ReviewContent | limitTo: 200 }}</p>
+						<i><span am-time-ago="Review.CreateDate"></span></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

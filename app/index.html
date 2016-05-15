@@ -8,14 +8,16 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css">
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular.css">
     <link rel="stylesheet" href="/assets/css/application.css">
     <!-- endbuild -->
   </head>
@@ -48,7 +50,7 @@
               <li><a ng-href="#/">Contact</a></li>
             </ul>
             <ul class="nav nav-pills pull-right nav-header">
-              <li class="header-content">
+              <li class="header-profile-img">
 
                   <div id="UserProfileImage">
                    <img src="/assets/images/no-profile-img.png"  class="img-circle" width="40" height="40" ng-show="!IsLogin || User.ProfileImage === undefined" >
@@ -96,11 +98,11 @@
                                         <div class="form-group">
                                            <label class="sr-only" for="Email">Email address</label>
                                            <input type="email" class="form-control" id="Email" ng-model="Email" placeholder="Email address" required>
+
                                         </div>
                                         <div class="form-group">
                                            <label class="sr-only" for="Username">Username</label>
                                            <input type="password" class="form-control" id="Username" ng-model="Username" placeholder="Username" required>
-                                            <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                         </div>
                                         <div class="form-group">
                                            <label class="sr-only" for="Password">Password</label>
@@ -168,15 +170,15 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqUyoFIdSN7WVTqx5Q9aoRwGsbYL49-_s"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.5.2/oauth.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular-rangy.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.1/textAngular.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.js"></script>
@@ -190,6 +192,7 @@
     <script src="scripts/services/contentBlocksService.js"></script>
     <script src="scripts/services/credentialService.js"></script>
     <script src="scripts/services/userService.js"></script>
+    <script src="scripts/services/reviewService.js"></script>
     <script src="scripts/directives/floatingList.js"></script>
     <script src="scripts/directives/poiInfo.js"></script>
     <script src="scripts/directives/mapCanvas.js"></script>

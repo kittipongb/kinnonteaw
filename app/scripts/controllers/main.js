@@ -8,8 +8,8 @@
  * Controller of the kinnonteawApp
  */
 angular.module('kinnonteawApp')
-  .controller('MainCtrl', ['$scope', '$http', '$timeout', 'contentBlockService', 'CredentialService', 'ENV', 
-    function ($scope, $http, $timeout, contentBlockService, CredentialService, ENV) {
+  .controller('MainCtrl', ['$scope', '$http', '$timeout', 'contentBlockService', 'CredentialService', 'ENV', 'UserService',
+    function ($scope, $http, $timeout, contentBlockService, CredentialService, ENV, UserService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -145,18 +145,24 @@ angular.module('kinnonteawApp')
         } 
         
         // Create User from Login with Social
-        /*
+    
         response.provider = provider;
 
-        var createAndCheckLofinSocialUrl = ENV.apiEndpoint + '/users/CreateAndUpdateWithSocial';
+        UserService.CreateAndUpdateWithSocial(response)
+        .then(function(data, status) {
+          console.log('social success');
+        }, function(error, status) {
+
+        });
+     /*   var createAndCheckLofinSocialUrl = ENV.apiEndpoint + '/users/CreateAndUpdateWithSocial';
         
         $http.post(createAndCheckLofinSocialUrl, response)
         .success(function (data, status, headers, config) {
         })
         .error(function (data, status, headers, config) {
          
-        });
-        */
+        });*/
+     
     }
     
 

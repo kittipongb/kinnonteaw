@@ -10,6 +10,7 @@
     "load-grunt-tasks": "^3.5.0",
     "lodash": "^4.11.1",
     "nodemailer": "^0.7.1",
+    "q": "^1.4.1",
     "xoauth2": "^1.1.0"
   },
   "repository": {

@@ -17,8 +17,8 @@ router.get('/CreateReview', function (req, res, next) {
     createDate.setHours ( createDate.getHours() + 7 );// GMT Bangkok +7
     Review.CreateDate = createDate;
     Review.UpdateDate = createDate;
-    db.collection(config.mongodb.poi_subtype.name)
-        .insert(poisubtype, function (error, result) {
+    db.collection('Review')
+        .insert(Review, function (error, result) {
             if (error) throw error
 
             console.log("Insert poi sub type success ?? " + result[0]._id);

@@ -17,7 +17,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'CONFIG'
+    'CONFIG',
+    'textAngular'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -32,6 +33,10 @@ angular
       .when('/poiview/:poiId?', {
         templateUrl: 'views/poiview.html',
         controller: 'PoiViewCtrl'
+      })
+      .when('/review', {
+        templateUrl: 'views/review.html',
+        controller: 'ReviewCtrl'
       })
       .otherwise({
         redirectTo: '/'

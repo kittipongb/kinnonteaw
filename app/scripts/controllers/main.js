@@ -150,7 +150,7 @@ angular.module('kinnonteawApp')
 
         UserService.CreateAndUpdateWithSocial(response)
         .then(function(data, status) {
-          console.log('social success');
+
         }, function(error, status) {
 
         });

@@ -38,6 +38,10 @@ angular
         templateUrl: 'views/review.html',
         controller: 'ReviewCtrl'
       })
+      .when('/places', {
+        templateUrl: 'views/places.html',
+        controller: 'PlacesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

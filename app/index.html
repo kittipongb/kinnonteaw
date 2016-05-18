@@ -45,7 +45,8 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/review">Review</a></li>
+              <li><a ng-href="#/review">Journey</a></li>
+              <li><a ng-href="#/places">Place</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
@@ -170,9 +171,15 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="bower_components/rangy/rangy-core.js"></script>
+    <script src="bower_components/rangy/rangy-classapplier.js"></script>
+    <script src="bower_components/rangy/rangy-highlighter.js"></script>
+    <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+    <script src="bower_components/rangy/rangy-serializer.js"></script>
+    <script src="bower_components/rangy/rangy-textrange.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+    <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -184,6 +191,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/places.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/poiview.js"></script>
     <script src="scripts/controllers/review.js"></script>
@@ -194,6 +202,7 @@
     <script src="scripts/services/userService.js"></script>
     <script src="scripts/services/reviewService.js"></script>
     <script src="scripts/directives/floatingList.js"></script>
+    <script src="scripts/directives/pileList.js"></script>
     <script src="scripts/directives/poiInfo.js"></script>
     <script src="scripts/directives/mapCanvas.js"></script>
     <!-- endbuild -->

@@ -78,11 +78,11 @@
                                     <div class="social-buttons">
                                       <center>
                                         <div class="row">
-                                          <div class="col-md-4">
+                                          <div class="col-md-6">
                                             <a href="" class="btn btn-block btn-social btn-facebook" ng-click="LoginWithSocial('facebook')">
                                             <i class="fa fa-facebook"></i> Facebook</a>
                                           </div>
-                                          <div class="col-md-4">
+                                          <div class="col-md-6">
                                             <a href="" class="btn btn-block btn-social btn-twitter" ng-click="LoginWithSocial('twitter')">
                                             <i class="fa fa-twitter"></i> Twitter</a>
                                           </div>
@@ -90,40 +90,52 @@
                                       </center>
                                     </div>
                                     <div>
-                                        <div class="locate-or">or</div>
-                                        <hr class="featurette-divider signin-seperator">
+                                        <div class="locate-or or-login">or</div>
+                                        <hr class="featurette-divider signin-seperator hr-login">
                                     </div>
-                                     
-                                     <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                           <label class="sr-only" for="Email">Email address</label>
-                                           <input type="email" class="form-control" id="Email" ng-model="Email" placeholder="Email address" required>
+                                    <div>
+                                       <form class="form animated fadeIn" role="form" method="post" action="login" data-toggle="validator" accept-charset="UTF-8" id="signup-form" ng-if="IsRequestSignup">
+                                          <div class="form-group">
+                                             <label class="sr-only" for="Email">Email address</label>
+                                             <input type="email" class="form-control" id="Email" ng-model="Email" placeholder="Email address" required>
 
-                                        </div>
-                                        <div class="form-group">
-                                           <label class="sr-only" for="Username">Username</label>
-                                           <input type="password" class="form-control" id="Username" ng-model="Username" placeholder="Username" required>
-                                        </div>
-                                        <div class="form-group">
-                                           <label class="sr-only" for="Password">Password</label>
-                                           <input type="password" class="form-control" id="Password" ng-model="Password" placeholder="Password" required>
+                                          </div>
+                                          <div class="form-group has-feedback">
+                                             <label class="sr-only" for="Username">Username</label>
+                                             <input type="text" class="form-control" id="Username" ng-model="Username" placeholder="Username" data-error="Bruh, that email address is invalid" required>
+                                          </div>
+                                          <div class="form-group has-feedback">
+                                             <label class="sr-only" for="Password">Password</label>
+                                             <input type="password" class="form-control" id="Password" ng-model="Password" placeholder="Password" required>
                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-                                        </div>
-                                        <div class="form-group">
-                                           <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                        </div>
-                                        <div class="checkbox">
-                                           <label>
-                                           <input type="checkbox"> keep me logged-in
-                                           </label>
-                                        </div>
-                                     </form>
-                                  </div>
-                                  <div class="bottom text-center">
-                                    New here ? <a href="#"><b>Join Us</b></a>
-                                  </div>
+                                          </div>
+                                          <div class="form-group">
+                                             <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+                                          </div>
+                                          <div class="checkbox">
+                                             <label>
+                                             <input type="checkbox"> keep me logged-in
+                                             </label>
+                                          </div>
+                                          <div class="help-block text-center"><a href="" ng-click="RequestSignin()">Signin</a></div>
+                                       </form>
+                                       <form class="form animated fadeIn" role="form" method="post" action="login" data-toggle="validator" accept-charset="UTF-8" id="signin-form" ng-if="!IsRequestSignup">
+                                          <div class="form-group has-feedback">
+                                             <label class="sr-only" for="Username">Username</label>
+                                             <input type="text" class="form-control" id="Username" ng-model="Username" placeholder="Username" data-error="Bruh, that email address is invalid" required>
+                                          </div>
+                                          <div class="form-group has-feedback">
+                                             <label class="sr-only" for="Password">Password</label>
+                                             <input type="password" class="form-control" id="Password" ng-model="Password" placeholder="Password" required>
+                                          </div>
+                                          <div class="form-group">
+                                             <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                                          </div>
+                                          <div class="help-block text-right"><a href="" ng-click="RequestSignup()">Create new Account</a></div>
+                                       </form>
+                                    </div>
                                </div>
-                            </div>
+                            </div> <!-- modal body-->
                         </div>
                     </div>
                 </div>
@@ -170,9 +182,15 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="bower_components/rangy/rangy-core.js"></script>
+    <script src="bower_components/rangy/rangy-classapplier.js"></script>
+    <script src="bower_components/rangy/rangy-highlighter.js"></script>
+    <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+    <script src="bower_components/rangy/rangy-serializer.js"></script>
+    <script src="bower_components/rangy/rangy-textrange.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+    <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

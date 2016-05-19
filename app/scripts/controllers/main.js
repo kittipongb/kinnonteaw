@@ -66,6 +66,13 @@ angular.module('kinnonteawApp')
         console.log('oauth err ', error);
     });
     $scope.IsLogin = false;
+    $scope.IsRequestSignup = false;
+    $scope.RequestSignup = function() {
+      $scope.IsRequestSignup = true;
+    }
+    $scope.RequestSignin = function() {
+      $scope.IsRequestSignup = false;
+    }
     $scope.LoginWithSocial = function (provider) {
         console.log(provider);
         OAuth.popup(provider)

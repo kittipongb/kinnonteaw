@@ -8,7 +8,7 @@ router.get('/LoadReview', function(req, res){
             if (err) {
 
             } else {
-                console.log(reviews);
+           //     console.log(reviews);
                 res.json(reviews);
             }
         });
@@ -27,8 +27,28 @@ router.get('/LoadReviewByPoiId/:PoiId', function(req, res) {
         });
 });
 
+router.get('/LoadReviewByReviewId/:ReviewId', function(req, res) {
+    var ReviewId = req.params.ReviewId;
+    var o_id = bson.BSONPure.ObjectID(ReviewId.toString());
+
+    db.collection('Review')
+        .findOne({
+            '_id': o_id
+        }, function (err, review) {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            } else if (!review) {
+                res.sendStatus(404);
+                return;
+            } else if (review){
+                res.json(review);
+            }
+        });
+});
 // Create Review
-router.get('/CreateReview', function (req, res, next) {
+router.post('/CreateReview', function (req, res, next) {
     var Review = req.body;
     console.log('create review ', Review);
     var createDate = new Date ();
@@ -36,10 +56,14 @@ router.get('/CreateReview', function (req, res, next) {
     Review.CreateDate = createDate;
     Review.UpdateDate = createDate;
     db.collection('Review')
-        .insert(Review, function (error, result) {
-            if (error) throw error
+        .insert(Review, function (err, result) {
+            if (err) {
 
-            console.log("Insert poi sub type success ?? " + result[0]._id);
+            } else {
+                console.log(result);
+            }
+
+        //    console.log("Insert poi sub type success ?? " + result[0]._id);
         });
 });
 
@@ -53,7 +77,7 @@ router.get('/UpdateReview', function (req, res, next) {
     var updateDate = new Date ();
     updateDate.setHours ( updateDate.getHours() + 7 );// GMT Bangkok +7
     Review.UpdateDate = updateDate;
-    db.collection(config.mongodb.poi_subtype.name)
+    db.collection('Review')
         .update({
                 '_id': o_id
             }, 

@@ -18,7 +18,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'CONFIG',
-    'textAngular'
+    'textAngular','ngTagsInput'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -35,6 +35,10 @@ angular
         controller: 'PoiViewCtrl'
       })
       .when('/review', {
+        templateUrl: 'views/review.html',
+        controller: 'ReviewCtrl'
+      })
+      .when('/review/:reviewId', {
         templateUrl: 'views/review.html',
         controller: 'ReviewCtrl'
       })

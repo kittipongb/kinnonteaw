@@ -1,8 +1,8 @@
 <div>
 	this is review
-	<a ng-click="SaveArticle()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> ตั้งกระทู้</a>
+	<a ng-click="CreateReview()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> ตั้งกระทู้</a>
 	<div class="row">
-		<div id="ViewReview" class="animated fadeIn" style="display: block">
+		<div id="ViewReview" class="animated fadeIn" ng-if="Mode == 'view'">
 			<div class="row">
 				<div class="col-md-12"><h4>กระทู้ปักหมุด</h4></div>
 				<div class="col-md-12" class="table-responsive">
@@ -14,11 +14,52 @@
 				<div class="col-md-12"><h4>กระทู้</h4></div>
 				<div class="col-md-12" ng-repeat="Review in Reviews">
 					<div class="col-md-2">
+						<a href="#/review/{{Review._id}}" ng-click="ViewReview()" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span></a>
 					</div>
 					<div class="col-md-10">
 						<h5>{{Review.ReviewTitle}} </h5>
 						<p class="line-height">{{Review.ReviewContent | limitTo: 200 }}</p>
 						<i><span am-time-ago="Review.CreateDate"></span></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="EditReview" class="animated fadeIn" ng-if="Mode == 'edit'">
+			<div class="row" ng-if="Review._id === undefined">
+				<div class="col-md-12"><h3 class="article-header">Create Review</h3></div>
+				<div class="col-md-12">
+					<div class="col-md-2">หัวข้อ : </div>
+					<div class="col-md-10">
+						<input type="text" class="article-input form-control" ng-model="Review.ReviewTitle">
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-2">เนื้อหา : </div>
+					<div class="col-md-10">
+						<div text-angular ng-model="Review.ReviewContent"></div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-2">แท็ก : </div>
+					<div class="col-md-10">
+						<tags-input ng-model="Review.Tags" class="article-input"></tags-input>
+					</div>
+				</div>
+				
+				<div class="col-md-12 text-center">
+					<a ng-click="SaveReview()" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> ตั้งกระทู้</a>
+					<a ng-click="CancelReview()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> ยกเลิก</a>
+				</div>
+			</div>
+			<div class="row" ng-if="Review._id !== undefined">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						<h4>{{Review.ReviewTitle}}</h4>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-12">
+						<div ta-bind ng-model="Review.ReviewContent"></div>
 					</div>
 				</div>
 			</div>

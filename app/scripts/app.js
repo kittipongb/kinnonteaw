@@ -38,9 +38,15 @@ angular
         templateUrl: 'views/review.html',
         controller: 'ReviewCtrl'
       })
+<<<<<<< HEAD
       .when('/review/:reviewId', {
         templateUrl: 'views/review.html',
         controller: 'ReviewCtrl'
+=======
+      .when('/places', {
+        templateUrl: 'views/places.html',
+        controller: 'PlacesCtrl'
+>>>>>>> 0c824d057d29f67a7a26b581934fc2f98569b9cc
       })
       .otherwise({
         redirectTo: '/'

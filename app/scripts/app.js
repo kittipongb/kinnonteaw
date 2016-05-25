@@ -42,6 +42,10 @@ angular
         templateUrl: 'views/review.html',
         controller: 'ReviewCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .when('/places', {
         templateUrl: 'views/places.html',
         controller: 'PlacesCtrl'

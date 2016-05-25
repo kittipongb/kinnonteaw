@@ -1,0 +1,63 @@
+<div class="row" ng-controller="LoginCtrl">
+  <div class="col-md-12">
+    Login via
+    <div class="social-buttons">
+      <center>
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <a href="" class="btn btn-block btn-social btn-facebook" ng-click="LoginWithSocial('facebook')">
+            <i class="fa fa-facebook"></i> Facebook</a>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <a href="" class="btn btn-block btn-social btn-twitter" ng-click="LoginWithSocial('twitter')">
+            <i class="fa fa-twitter"></i> Twitter</a>
+          </div>
+        </div>
+      </center>
+    </div>
+    <div>
+        <div class="locate-or or-login">or</div>
+        <hr class="featurette-divider signin-seperator hr-login">
+    </div>
+    <div>
+       <form class="form animated fadeIn" role="form" method="post" data-toggle="validator" accept-charset="UTF-8" id="signup-form" ng-if="IsRequestSignup">
+          <div class="form-group">
+             <label class="sr-only" for="Email">Email address</label>
+             <input type="email" class="form-control" id="Email" ng-model="SignupEmail" placeholder="Email address" required>
+
+          </div>
+          <div class="form-group has-feedback">
+             <label class="sr-only" for="Username">Username</label>
+             <input type="text" class="form-control" id="Username" ng-model="SignupUsername" placeholder="Username" data-error="Bruh, that email address is invalid" required>
+          </div>
+          <div class="form-group has-feedback">
+             <label class="sr-only" for="Password">Password</label>
+             <input type="password" class="form-control" id="Password" ng-model="SignupPassword" placeholder="Password" required>
+            <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+          </div>
+          <div class="form-group">
+             <button type="submit" ng-click="Signup()" class="btn btn-primary btn-block">Sign up</button>
+          </div>
+          <div class="checkbox">
+             <label>
+             <input type="checkbox"> keep me logged-in
+             </label>
+          </div>
+          <div class="help-block text-center"><a href="" ng-click="RequestSignin()">Signin</a></div>
+       </form>
+       <form class="form animated fadeIn" role="form" method="post" data-toggle="validator" accept-charset="UTF-8" id="signin-form" ng-if="!IsRequestSignup">
+          <div class="form-group has-feedback">
+             <label class="sr-only" for="Username">Username</label>
+             <input type="text" class="form-control" ng-model="SigninUsername" placeholder="Username" data-error="Bruh, that email address is invalid" required>
+          </div>
+          <div class="form-group has-feedback">
+             <label class="sr-only" for="Password">Password</label>
+             <input type="password" class="form-control" ng-model="SigninPassword" placeholder="Password" required>
+          </div>
+          <div class="form-group">
+             <button type="submit" ng-click="Signin()" class="btn btn-success btn-block">Sign in</button>
+          </div>
+          <div class="help-block text-right"><a href="" ng-click="RequestSignup()">Create new Account</a></div>
+       </form>
+    </div>
+</div>

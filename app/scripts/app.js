@@ -52,5 +52,14 @@ angular
       })
       .otherwise({
         redirectTo: '/'
-      });
-  });
+      })
+
+})
+.run(function ($rootScope) {
+
+    $rootScope.$on('UpdateUser', function (event, args) {
+      console.log('root ', args);
+        $rootScope.$broadcast('UpdateUser', args);
+    });
+    
+});

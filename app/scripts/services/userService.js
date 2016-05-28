@@ -17,7 +17,7 @@ angular.module('kinnonteawApp').service("UserService", ["$q", "$http", "ENV", fu
     	},
     	LoginWithUsernameAndPassword: function(username, password) {
     		var defer = $q.defer();
-    		var url = ENV.apiEndpoint + "/users/FindByUsernameAndPassword/" + username + "/" + password;
+    		var url = ENV.apiEndpoint + "/user/FindByUsernameAndPassword/" + username + "/" + password;
       		$http.get(url)
           	.success(function (data, status) {
           		defer.resolve(data);
@@ -30,7 +30,7 @@ angular.module('kinnonteawApp').service("UserService", ["$q", "$http", "ENV", fu
     	CreateUserEmailActivate: function(Username, Password, Email, UserObject) {
         console.log('sinn up ');
     		var defer = $q.defer();
-    		var createUserURL = ENV.apiEndpoint + "/users/CreateAppUser/" + Username + "/" + Password + "/"+ Email;
+    		var createUserURL = ENV.apiEndpoint + "/user/CreateAppUser/" + Username + "/" + Password + "/"+ Email;
     		$http.post(createUserURL, UserObject)
         	.success(function(data, status) {
         		defer.resolve(data);
@@ -39,6 +39,6 @@ angular.module('kinnonteawApp').service("UserService", ["$q", "$http", "ENV", fu
         		defer.resolve(error);
         	});
     		return defer.promise;
-    	},
+    	}
     };
 }]);

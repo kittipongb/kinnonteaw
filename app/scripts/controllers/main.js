@@ -25,7 +25,12 @@ angular.module('kinnonteawApp')
         Terminal : '',
         UserType : ''
     }
-
+/*
+    $scope.$on('UpdateUser', function(event, data) { 
+        console.log('main', data); 
+        $scope.User = data;
+    });*/
+    $scope.User = UserService.User;
     if (!contentBlockService.dataReady()) {
         contentBlockService.fetch().then(function () {
             $scope.dataReady = true;

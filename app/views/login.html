@@ -20,19 +20,19 @@
         <hr class="featurette-divider signin-seperator hr-login">
     </div>
     <div>
-       <form class="form animated fadeIn" role="form" method="post" data-toggle="validator" accept-charset="UTF-8" id="signup-form" ng-if="IsRequestSignup">
+       <form class="form animated fadeIn" role="form" data-toggle="validator" accept-charset="UTF-8" id="signup-form" ng-if="IsRequestSignup">
           <div class="form-group">
              <label class="sr-only" for="Email">Email address</label>
-             <input type="email" class="form-control" id="Email" ng-model="SignupEmail" placeholder="Email address" required>
+             <input type="email" class="form-control" id="Email" ng-model="User.Signup_Email" placeholder="Email address" required>
 
           </div>
           <div class="form-group has-feedback">
              <label class="sr-only" for="Username">Username</label>
-             <input type="text" class="form-control" id="Username" ng-model="SignupUsername" placeholder="Username" data-error="Bruh, that email address is invalid" required>
+             <input type="text" class="form-control" id="Username" ng-model="User.Signup_Username" placeholder="Username" data-error="Bruh, that email address is invalid" required>
           </div>
           <div class="form-group has-feedback">
              <label class="sr-only" for="Password">Password</label>
-             <input type="password" class="form-control" id="Password" ng-model="SignupPassword" placeholder="Password" required>
+             <input type="password" class="form-control" id="Password" ng-model="User.Signup_Password" placeholder="Password" required>
             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
           </div>
           <div class="form-group">
@@ -45,14 +45,14 @@
           </div>
           <div class="help-block text-center"><a href="" ng-click="RequestSignin()">Signin</a></div>
        </form>
-       <form class="form animated fadeIn" role="form" method="post" data-toggle="validator" accept-charset="UTF-8" id="signin-form" ng-if="!IsRequestSignup">
+       <form class="form animated fadeIn" role="form" data-toggle="validator" accept-charset="UTF-8" id="signin-form" ng-if="!IsRequestSignup">
           <div class="form-group has-feedback">
              <label class="sr-only" for="Username">Username</label>
-             <input type="text" class="form-control" ng-model="SigninUsername" placeholder="Username" data-error="Bruh, that email address is invalid" required>
+             <input type="text" class="form-control" ng-model="User.Signin_Username" placeholder="Username" data-error="Bruh, that email address is invalid" required>
           </div>
           <div class="form-group has-feedback">
              <label class="sr-only" for="Password">Password</label>
-             <input type="password" class="form-control" ng-model="SigninPassword" placeholder="Password" required>
+             <input type="password" class="form-control" ng-model="User.Signin_Password" placeholder="Password" required>
           </div>
           <div class="form-group">
              <button type="submit" ng-click="Signin()" class="btn btn-success btn-block">Sign in</button>

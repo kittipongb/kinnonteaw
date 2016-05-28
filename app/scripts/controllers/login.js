@@ -1,13 +1,21 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.controller('LoginCtrl', ['$scope', 'UserService', 'CredentialService', 
-	function ($scope, UserService, CredentialService) {
+.controller('LoginCtrl', ['$scope','$route','$routeParams', '$location', 'UserService', 'CredentialService', 
+	function ($scope, $route, $routeParams,$location, UserService, CredentialService) {
 
+    $scope.User = {
+      Signup_Email:'',
+      Signup_Username: '',
+      Signup_Password: '',
+      Signin_Username: '',
+      Signin_Password: ''
+
+    }
    CredentialService.LoadOAuth()
     .then(function(data, status) {
         OAuth.initialize(data);
-        console.log(data);
+    //    console.log(data);
     }, function(error, status) {
         console.log('oauth err ', error);
     });
@@ -20,14 +28,27 @@ angular.module('kinnonteawApp')
       $scope.IsRequestSignup = false;
     }
     $scope.Signin = function() {
-    	console.log($scope.SigninUsername);
-    	console.log($scope.SigninPassword);
-    	UserService.LoginWithUsernameAndPassword($scope.SigninUsername, $scope.SigninPassword)
+    	console.log('in sing in ');
+    	console.log($scope.User.Signin_Username);
+    	console.log($scope.User.Signin_Password);
+    	UserService.LoginWithUsernameAndPassword($scope.User.Signin_Username, $scope.User.Signin_Password)
     	.then(function(data, status) {
     		console.log('login ', data);
+        UserService.User = data;
+        
+        $scope.$emit('UpdateUser', data);
+
+        $location.path('/');
+
     	}, function(err, status) {
 
     	});
+    }
+    $scope.Signup = function() {
+    	console.log('in sing up ');
+    	console.log($scope.User.Signup_Email);
+    	console.log($scope.User.Signup_Username);
+    	console.log($scope.User.Signup_Password);
     }
     $scope.Signout = function() {
 

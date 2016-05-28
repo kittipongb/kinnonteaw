@@ -73,7 +73,7 @@ router.get('/DeleteUser/:UserId', function(req, res) {
 	var UserId = req.params.UserId;
     
     var o_id = bson.BSONPure.ObjectID(UserId.toString());
-    db.collection(config.mongodb.user.name)
+    db.collection('User')
         .remove({
             _id: o_id
         }, function (error, result) {
@@ -147,4 +147,113 @@ router.post('/CreateAndUpdateWithSocial', function (req, res) {
         return;
     });
 });
+
+router.get('/FindByUsernameAndPassword/:Username/:Password', function (req, res) {
+    console.log('user.js -> /users ');
+    var findOneAppUserPromise = function (query) {
+        var defer = Q.defer();
+        db.collection('User')
+            .findOne(query, function (err, doc) {
+            if (err) {
+            //    console.log(err);
+                defer.reject(err);
+            } else {
+                console.log('oneuser ', doc);
+                defer.resolve(doc);
+            }
+        });
+        return defer.promise;
+    }
+    var findOneRolePromise = function (queryRole) {
+        var defer = Q.defer();
+        db.collection(mongodbConfig.mongodb.role.name)
+            .findOne(queryRole, function (err, doc) {
+            if (err) {
+                defer.reject(err);
+            } else {
+                defer.resolve(doc);
+            }
+        });
+        return defer.promise;
+    }
+    var findOneStaffPromise = function (queryStaff) {
+        var defer = Q.defer();
+        db.collection(mongodbConfig.mongodb.staff.name)
+            .findOne(queryStaff, function (err, doc) {
+            if (err) {
+                defer.reject(err);
+            } else {
+                defer.resolve(doc);
+            }
+        });
+        return defer.promise;
+    }
+    var findFirstAppUserFromUI = function (queryFindUserFirst) {
+        var defer = Q.defer();
+        db.collection('User')
+            .findOne(queryFindUserFirst , function (err, doc) {
+            if( err ) {
+                defer.reject(err);
+            } else {
+                defer.resolve(doc);
+            }
+        });
+        return defer.promise;
+    }
+
+    var Username = req.params.Username;
+    var Password = req.params.Password;
+    var queryFindUserFirst = {$or: [ { Username: Username }, { Email : Username } ]};
+    var AppUser = {};
+    // First Call , check is exist Username/Email and Password exist ?
+    findFirstAppUserFromUI(queryFindUserFirst)
+    .then(function(data, status) {
+        if(!data) {
+            res.sendStatus(404);
+            return;
+        } else {
+            console.log('1',data);
+        /*    var compare = bcrypt.compare(Password, data.Password, function(err, result) {
+                console.log('compare ' + result);
+                if (result) {
+                    var queryOneAppUser = {
+                       $or: [ { Username: Username }, { Email : Username } ],
+                       Terminal : 'web'
+                    };
+                    return findOneAppUserPromise(queryOneAppUser);
+                }
+            });*/
+/*
+        return  bcrypt_then.compare(Password, data.Password).then(function (valid) {
+                if (valid) {*/
+                    var queryOneAppUser = {
+                       $or: [ { Username: Username }, { Email : Username } ],
+                       Terminal : 'web'
+                    };
+                    return findOneAppUserPromise(queryOneAppUser);
+/*                }
+            });*/
+        }
+    }, function(err, status) {
+        console.log(err, err.stack.split("\n"));
+        res.sendStatus(500);
+        return;
+    })
+    .then(function(data, status) {
+        console.log('2',data);
+        res.json(data);
+    });
+    var findOneAppUser = function (query, callback) {
+        db.collection('User').findOne(query, function (err, doc) {
+            if (err) {
+                console.log(err);
+            } else {
+
+                callback(null, doc);
+            }
+        });
+    }
+
+    
+}); // End Find by Username and Password
 module.exports = router;

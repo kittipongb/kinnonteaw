@@ -34,12 +34,16 @@ angular
         templateUrl: 'views/poiview.html',
         controller: 'PoiViewCtrl'
       })
-      .when('/review', {
+      .when('/reviews', {
         templateUrl: 'views/review.html',
         controller: 'ReviewCtrl'
       })
+      .when('/review', {
+        templateUrl: 'views/review-detail.html',
+        controller: 'ReviewCtrl'
+      })
       .when('/review/:reviewId', {
-        templateUrl: 'views/review.html',
+        templateUrl: 'views/review-detail.html',
         controller: 'ReviewCtrl'
       })
       .when('/login', {

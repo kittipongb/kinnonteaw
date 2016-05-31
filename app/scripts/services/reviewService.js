@@ -1,7 +1,7 @@
 "use strict"
 angular.module('kinnonteawApp').service("ReviewService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
     return {
-    	LoadReview: function() {
+    	LoadReviews: function() {
     		var defer = $q.defer();
 		    var loadReviewUrl = ENV.apiEndpoint + '/review/LoadReview';
         

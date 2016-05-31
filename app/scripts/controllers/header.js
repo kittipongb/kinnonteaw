@@ -6,12 +6,14 @@ angular.module('kinnonteawApp')
 
     $scope.User = {};
 
-   $scope.$on('UpdateUser', function(event, data) { 
+    $scope.$on('UpdateUser', function(event, data) { 
         console.log('header ', data); 
         $scope.User = data;
     });
+    
+    
 
-   CredentialService.LoadOAuth()
+    CredentialService.LoadOAuth()
     .then(function(data, status) {
         OAuth.initialize('header',data);
     //    console.log(data);

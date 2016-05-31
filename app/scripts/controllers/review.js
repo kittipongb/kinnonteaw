@@ -3,41 +3,47 @@ angular.module('kinnonteawApp')
   .controller('ReviewCtrl', ['$scope', '$routeParams', 'ReviewService', 
    function ($scope, $routeParams, ReviewService) {
   	$scope.Reviews = [];
-    $scope.Review = {
-    	ReviewTitle: '',
-    	ReviewContent: '',
-    	Tags: [],
-    	Rating : 0
-    };
-    $scope.Mode = 'view';
-    console.log('review ctrl');
+    $scope.Review = {};
+    $scope.Page = {
+        Name: '',
+        Mode: ''
+    }
 
-    ReviewService.LoadReview()
-    .then(function(data, status) {
-    	console.log('review ctrl', data);
-      	$scope.Reviews = data;
-    }, function(error, status) {
+    $scope.LoadReviews = function() {
+        ReviewService.LoadReviews()
+        .then(function(data, status) {
+       // 	console.log('review ctrl', data);
+          	$scope.Reviews = data;
+        }, function(error, status) {
 
-    });
+        });
+    }
 
     $scope.CreateReview = function() {
-    	$scope.Mode = 'edit';
+        console.log('create review ');
+    	$scope.Page.Mode = 'new';
     }
 
     $scope.CancelReview = function() {
-    	$scope.Mode = 'view';
+    	$scope.Page.Mode = 'view';
     }
 
-    $scope.ViewReview = function() {
-    	$scope.Mode = 'edit';
-    	console.log('view review ', $routeParams);
+    $scope.ViewReview = function(reviewId) {
+    	$scope.Mode = 'view';
+    	console.log('view review ', reviewId);
     	console.log('view review ', $routeParams.reviewId);
-    	var reviewId = $routeParams.reviewId;
+    	var reviewId = reviewId;
     	ReviewService.LoadReviewByReviewId(reviewId)
     	.then(function(data, status) {
-    		$scope.Review = data;
+            $scope.Review._id = data._id;
+    		$scope.Review.ReviewTitle = data.ReviewTitle;
+            $scope.Review.ReviewContent = data.ReviewContent;
+            $scope.Review.Tags = data.Tags;
+            $scope.Page.Mode = 'view';
+            $scope.Review = data;
+            console.log('review ctrl', $scope.Review);
     	}, function(err, status) {
-    		consol.log('con not find review');
+    		console.log('con not find review');
     	});
     }
 

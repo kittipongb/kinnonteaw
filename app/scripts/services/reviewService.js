@@ -1,5 +1,6 @@
 "use strict"
 angular.module('kinnonteawApp').service("ReviewService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
+	var Reviews = [];
     return {
     	LoadReviews: function() {
     		var defer = $q.defer();
@@ -7,7 +8,7 @@ angular.module('kinnonteawApp').service("ReviewService", ["$q", "$http", "ENV", 
         
 	        $http.get(loadReviewUrl)
 	        .success(function (data, status) {
-	        	console.log(data);
+	        	
 	        	defer.resolve(data);
 	        })
 	        .error(function (error, status) {

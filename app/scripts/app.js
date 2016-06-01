@@ -40,11 +40,13 @@ angular
       })
       .when('/review', {
         templateUrl: 'views/review-detail.html',
-        controller: 'ReviewCtrl'
+        controller: 'ReviewCtrl',
+        mode: 'new'
       })
       .when('/review/:reviewId', {
         templateUrl: 'views/review-detail.html',
-        controller: 'ReviewCtrl'
+        controller: 'ReviewCtrl',
+        mode: 'view'
       })
       .when('/login', {
         templateUrl: 'views/login.html',

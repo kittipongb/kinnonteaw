@@ -8,28 +8,56 @@ angular.module('kinnonteawApp')
         Name: '',
         Mode: ''
     }
+    function isEmpty(obj) {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
 
+        return true && JSON.stringify(obj) === JSON.stringify({});
+    }
+    $scope.$on('$routeChangeSuccess', function() {
+        // $routeParams should be populated here
+        console.log('change success ' , $routeParams);
+        if (isEmpty($routeParams)) {
+            $scope.CreateReview();
+        } else {
+            var reviewId = $routeParams.reviewId;
+            $scope.ViewReview(reviewId);
+        }
+    });
     $scope.LoadReviews = function() {
         ReviewService.LoadReviews()
         .then(function(data, status) {
-       // 	console.log('review ctrl', data);
-          	$scope.Reviews = data;
+          	angular.forEach(data, function(review) {
+                var test = review.ReviewContent;
+
+                var testImg = test.match("<img (.*)/>");
+                console.log(testImg);
+                if (testImg) {
+                    console.log('test ', testImg[0]);
+                    review.ThumbnailImg = testImg[0];
+                } else {
+                    review.ThumbnailImg = undefined;
+                }
+                $scope.Reviews.push(review);
+            });
+
         }, function(error, status) {
 
         });
-    }
+    };
 
     $scope.CreateReview = function() {
         console.log('create review ');
     	$scope.Page.Mode = 'new';
-    }
+    };
 
     $scope.CancelReview = function() {
     	$scope.Page.Mode = 'view';
-    }
+    };
 
     $scope.ViewReview = function(reviewId) {
-    	$scope.Mode = 'view';
     	console.log('view review ', reviewId);
     	console.log('view review ', $routeParams.reviewId);
     	var reviewId = reviewId;
@@ -41,7 +69,6 @@ angular.module('kinnonteawApp')
             $scope.Review.Tags = data.Tags;
             $scope.Page.Mode = 'view';
             $scope.Review = data;
-            console.log('review ctrl', $scope.Review);
     	}, function(err, status) {
     		console.log('con not find review');
     	});
@@ -52,6 +79,7 @@ angular.module('kinnonteawApp')
     	.then(function(data, status) {
     		console.log(data);
 
+            $location.path('#/reviews');  
     	}, function(err, status) {
 
     	});

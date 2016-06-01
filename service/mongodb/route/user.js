@@ -95,6 +95,7 @@ router.post('/CreateAndUpdateWithSocial', function (req, res) {
                 }
                 , function (err, isexist) {
                     if (err) {
+                        console.log('err ', err);
                         defer.reject(err);
                     } else {
                         defer.resolve(isexist);
@@ -103,6 +104,12 @@ router.post('/CreateAndUpdateWithSocial', function (req, res) {
         return defer.promise;
     }
     var createSocialAccount = function() {
+        delete Social.Signin_Username;
+        delete Social.Signin_Password;
+        delete Social.Signup_Email;
+        delete Social.Signup_Username;
+        delete Social.Signup_Password;
+        
         var defer = Q.defer();
         var appuser = {
                 'Username' : '',
@@ -213,26 +220,11 @@ router.get('/FindByUsernameAndPassword/:Username/:Password', function (req, res)
             return;
         } else {
             console.log('1',data);
-        /*    var compare = bcrypt.compare(Password, data.Password, function(err, result) {
-                console.log('compare ' + result);
-                if (result) {
-                    var queryOneAppUser = {
-                       $or: [ { Username: Username }, { Email : Username } ],
-                       Terminal : 'web'
-                    };
-                    return findOneAppUserPromise(queryOneAppUser);
-                }
-            });*/
-/*
-        return  bcrypt_then.compare(Password, data.Password).then(function (valid) {
-                if (valid) {*/
-                    var queryOneAppUser = {
-                       $or: [ { Username: Username }, { Email : Username } ],
-                       Terminal : 'web'
-                    };
-                    return findOneAppUserPromise(queryOneAppUser);
-/*                }
-            });*/
+            var queryOneAppUser = {
+               $or: [ { Username: Username }, { Email : Username } ],
+               Terminal : 'web'
+            };
+            return findOneAppUserPromise(queryOneAppUser);
         }
     }, function(err, status) {
         console.log(err, err.stack.split("\n"));

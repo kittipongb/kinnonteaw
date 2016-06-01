@@ -60,9 +60,9 @@
               </li>
               <li class="header-content">
                 
-                <a href="#/login" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
+                <a href="#/login" class="btn btn-primary" ng-if="!IsLogin"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
 
-                <a href="#/logout" class="btn btn-danger"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+                <a href="#/logout" class="btn btn-danger" ng-if="IsLogin"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
                 
               </li>
             </ul>

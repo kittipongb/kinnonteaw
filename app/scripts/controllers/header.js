@@ -24,9 +24,9 @@ angular.module('kinnonteawApp')
     $scope.IsRequestSignup = false;
     $scope.RequestSignup = function() {
       $scope.IsRequestSignup = true;
-    }
+    };
     $scope.RequestSignin = function() {
       $scope.IsRequestSignup = false;
-    }
+    };
 
 }]);

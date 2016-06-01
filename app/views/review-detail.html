@@ -1,19 +1,20 @@
 <div>
 	{{Review}} {{Page.Mode}}
-	<div id="ViewReview" class="animated fadeIn" ng-if="Review === undefined">
+	<div id="ViewReview" class="animated fadeIn" ng-if="Page.Mode == 'view'">
 		<div class="row">
 			<div class="col-md-12">
 				<h3>{{Review.ReviewTitle}}</h3>
-
-
 			</div>
 			<div class="col-md-12">
-				{{Review.ReviewContent}}
+				<div ng-repeat="tag in Review.Tags">{{tag.Text}}</div>
+			</div>
+			<div class="col-md-12">
+				<div ta-bind ng-model="Review.ReviewContent"></div>
 			</div>
 		</div>
 
 	</div>
-	<div id="NewReview" class="animated fadeIn" ng-if="Review !== undefined">
+	<div id="NewReview" class="animated fadeIn" ng-if="Page.Mode == 'new'">
 		<div class="row" >
 			<div class="col-md-12"><h3 class="article-header">Create Review</h3></div>
 			<div class="col-md-12">

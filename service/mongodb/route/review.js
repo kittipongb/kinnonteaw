@@ -3,12 +3,17 @@ var router = express.Router();
 
 router.get('/LoadReview', function(req, res){
 	db.collection('Review')
-        .find({})
+        .find({ 
+            $query: {} ,
+            $orderby: { CreateDate : -1 } // Last create date show before if 1 Last createdate go to the bottom
+        })
         .toArray(function (err, reviews) {
             if (err) {
-
+            console.log(err);
+                
+                
             } else {
-           //     console.log(reviews);
+                console.log(reviews);
                 res.json(reviews);
             }
         });
@@ -47,6 +52,7 @@ router.get('/LoadReviewByReviewId/:ReviewId', function(req, res) {
             }
         });
 });
+
 // Create Review
 router.post('/CreateReview', function (req, res, next) {
     var Review = req.body;

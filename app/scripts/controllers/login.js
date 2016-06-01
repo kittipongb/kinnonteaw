@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.controller('LoginCtrl', ['$scope','$route','$routeParams', '$location', 'UserService', 'CredentialService', 
-	function ($scope, $route, $routeParams,$location, UserService, CredentialService) {
+.controller('LoginCtrl', ['$scope','$http', '$route','$routeParams', '$location', 'UserService', 'CredentialService', 
+	function ($scope, $http, $route, $routeParams,$location, UserService, CredentialService) {
 
     $scope.User = {
       Signup_Email:'',
@@ -11,7 +11,7 @@ angular.module('kinnonteawApp')
       Signin_Username: '',
       Signin_Password: ''
 
-    }
+    };
    CredentialService.LoadOAuth()
     .then(function(data, status) {
         OAuth.initialize(data);
@@ -23,10 +23,10 @@ angular.module('kinnonteawApp')
     $scope.IsRequestSignup = false;
     $scope.RequestSignup = function() {
       $scope.IsRequestSignup = true;
-    }
+    };
     $scope.RequestSignin = function() {
       $scope.IsRequestSignup = false;
-    }
+    };
     $scope.Signin = function() {
     	console.log('in sing in ');
     	console.log($scope.User.Signin_Username);
@@ -37,22 +37,20 @@ angular.module('kinnonteawApp')
         UserService.User = data;
         
         $scope.$emit('UpdateUser', data);
-
-        $location.path('/');
-
+        $location.path('#');
     	}, function(err, status) {
 
     	});
-    }
+    };
     $scope.Signup = function() {
     	console.log('in sing up ');
     	console.log($scope.User.Signup_Email);
     	console.log($scope.User.Signup_Username);
     	console.log($scope.User.Signup_Password);
-    }
+    };
     $scope.Signout = function() {
 
-    }
+    };
     $scope.LoginWithSocial = function (provider) {
         console.log(provider);
         OAuth.popup(provider)
@@ -62,6 +60,7 @@ angular.module('kinnonteawApp')
                 //this will display "John Doe" in the console                
                 $scope.$apply(function() {
                   $scope.PopulateValue(provider, response);
+                  
                 });
                 console.log($scope.User);
             })
@@ -74,7 +73,7 @@ angular.module('kinnonteawApp')
             //handle error with err
             console.log(err.message + err.stack);
         });
-    }
+    };
 
     $scope.PopulateValue = function(provider, response) {
         if (provider === 'facebook') {
@@ -137,11 +136,13 @@ angular.module('kinnonteawApp')
 
         UserService.CreateAndUpdateWithSocial(response)
         .then(function(data, status) {
-
+          console.log(data);
+          $scope.$emit('UpdateUser', $scope.User);
+                  $location.path('/');
         }, function(error, status) {
 
         });
-    }
+    };
     
     $scope.Logout = function() {
       var int = 1;
@@ -172,5 +173,5 @@ angular.module('kinnonteawApp')
               }
           });
         });
-    }
+    };
 }]);

@@ -1,5 +1,4 @@
 <div>
-	this is review
 	<a href="#/review" ng-click="CreateReview()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> สร้างเรื่องราว</a>
 	<div class="row" >
 		<div class="animated fadeIn" >
@@ -12,12 +11,16 @@
 			<div class="row" ng-init="LoadReviews()">
 				<div class="col-md-12"><h3><i class="fa fa-pencil"></i> กระทู้</h3></div>
 				<div class="col-md-12" ng-repeat="Review in Reviews">
-					<div class="col-md-2">
-						<a href="#/review/{{Review._id}}" ng-click="ViewReview(Review._id)" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span></a>
+					<div class="col-md-1">
+						<a href="#/review/{{Review._id}}" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span></a>
 					</div>
-					<div class="col-md-10">
-						<h5>{{Review.ReviewTitle}} </h5>
-						<p class="line-height">{{Review.ReviewContent | limitTo: 200 }}</p>
+					<div class="col-md-4">
+						<div ta-bind ng-model="Review.ThumbnailImg" ></div>
+					</div>
+					<div class="col-md-7">
+						<h4>{{Review.ReviewTitle}} </h4>
+						{{Review.ReviewContent | limitTo: 200 }}
+
 						<i><span am-time-ago="Review.CreateDate"></span></i>
 					</div>
 				</div>

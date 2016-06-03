@@ -3,19 +3,21 @@
 	<div class="row" >
 		<div class="animated fadeIn" >
 			<div class="row">
-				<div class="col-md-12"><h3><i class="fa fa-thumb-tack"></i> กระทู้ปักหมุด</h3></div>
+				<div class="col-md-12"><h3><i class="fa fa-thumb-tack"></i> เรื่องราวยอดเยี่ยม</h3></div>
 				<div class="col-md-12" class="table-responsive">
 					
 				</div>
 			</div>
+			<hr class="footer-hr">
 			<div class="row" ng-init="LoadReviews()">
-				<div class="col-md-12"><h3><i class="fa fa-pencil"></i> กระทู้</h3></div>
+				<div class="col-md-12"><h3><i class="fa fa-pencil"></i> เรื่องราว</h3></div>
 				<div class="col-md-12" ng-repeat="Review in Reviews">
 					<div class="col-md-1">
 						<a href="#/review/{{Review._id}}" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span></a>
 					</div>
-					<div class="col-md-4">
-						<div ta-bind ng-model="Review.ThumbnailImg" ></div>
+					<div class="col-md-3 text-center row-img-thumbnail-reviews">
+						<img ng-src="{{Review.SourceImageThumbnail}}" class="img-thumbnail-articles" />
+
 					</div>
 					<div class="col-md-7">
 						<h4>{{Review.ReviewTitle}} </h4>

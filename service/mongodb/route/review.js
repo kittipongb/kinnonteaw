@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Q = require('q');
 
 router.get('/LoadReview', function(req, res){
 	db.collection('Review')
@@ -35,22 +36,58 @@ router.get('/LoadReviewByPoiId/:PoiId', function(req, res) {
 router.get('/LoadReviewByReviewId/:ReviewId', function(req, res) {
     var ReviewId = req.params.ReviewId;
     var o_id = bson.BSONPure.ObjectID(ReviewId.toString());
-
-    db.collection('Review')
+    var LoadReviewyId = function() {
+        var defer = Q.defer();
+        db.collection('Review')
         .findOne({
             '_id': o_id
         }, function (err, review) {
             if (err) {
-                console.log(err);
-                res.sendStatus(500);
-                return;
-            } else if (!review) {
-                res.sendStatus(404);
-                return;
-            } else if (review){
-                res.json(review);
+                defer.reject(err);
+            } else {
+                defer.resolve(review);
             }
         });
+        return defer.promise;
+    }
+    var LoadUserById = function(userId) {
+        var defer = Q.defer();
+        var user_id = bson.BSONPure.ObjectID(userId.toString());
+        db.collection('User')
+            .findOne({
+                $query: { '_id' : user_id} 
+            }, function (err, user) {
+                if (err) {
+                    defer.reject(err);
+                } else {
+                    defer.resolve(user);
+                }
+            });
+        return defer.promise;
+    };
+    var review = {};
+    LoadReviewyId()
+    .then(function(data, status) {
+        if (!data) {
+            console.log('not found review');
+        } else {
+            review = data;
+            var userId = review.UserId;
+            return LoadUserById(userId);
+        }
+    }, function(err, status) {
+        console.log('1',err, err.stack.split("\n"));
+    })
+    .then(function(user, status) {
+        if (!user) {
+            res.json(review);
+        } else {
+            review.User = user;
+            res.json(review);
+        }
+    }, function(err, status) {
+        console.log('2', err, err.stack.split("\n"));
+    });
 });
 
 // Create Review

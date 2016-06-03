@@ -1,6 +1,8 @@
 <div>
-	{{Review}} {{Page.Mode}}
 	<div id="ViewReview" class="animated fadeIn" ng-if="Page.Mode == 'view'">
+		<div class="row">
+			<div class="col-md-12"><a href="/articles" class="btn btn-default"><i class="fa fa-long-arrow-left"></i> กลับ</a></div>
+		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<h3>{{Review.ReviewTitle}}</h3>
@@ -11,8 +13,36 @@
 			<div class="col-md-12">
 				<div ta-bind ng-model="Review.ReviewContent"></div>
 			</div>
-		</div>
+			<div class="col-md-12 review-footer">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-10">
 
+						<img id="" src="/assets/images/no-profile-img.png"" class="img-circle" width="64" height="64">
+						<div class="col-md-12">
+							{{Review.User.Username}}
+						</div>
+						<div class="col-md-12">
+							อัพเดทล่าสุด
+							<i><span am-time-ago="Review.UpdateDate"></span></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=393083834131176";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+
+			<div class="fb-comments" data-href="http://localhost:9000/#/review/574d28f806d145ac4c2e2eb1" data-width="900" data-numposts="10"></div>
+		</div>
 	</div>
 	<div id="NewReview" class="animated fadeIn" ng-if="Page.Mode == 'new'">
 		<div class="row" >
@@ -35,7 +65,6 @@
 					<tags-input ng-model="Review.Tags" class="article-input"></tags-input>
 				</div>
 			</div>
-			
 			<div class="col-md-12 text-center">
 				<a ng-click="SaveReview()" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> ตั้งกระทู้</a>
 				<a ng-click="CancelReview()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> ยกเลิก</a>

@@ -30,16 +30,11 @@ angular.module('kinnonteawApp')
         ReviewService.LoadReviews()
         .then(function(data, status) {
           	angular.forEach(data, function(review) {
-                var test = review.ReviewContent;
-
-                var testImg = test.match("<img (.*)/>");
-                console.log(testImg);
-                if (testImg) {
-                    console.log('test ', testImg[0]);
-                    review.ThumbnailImg = testImg[0];
-                } else {
-                    review.ThumbnailImg = undefined;
-                }
+                var div = document.createElement('div');
+                div.innerHTML = review.ReviewContent;
+                var firstImage = div.getElementsByTagName('img')[0];
+                var imgSrc = firstImage ? firstImage.src : "";
+                review.SourceImageThumbnail = imgSrc;
                 $scope.Reviews.push(review);
             });
 

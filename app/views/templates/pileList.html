@@ -1,17 +1,17 @@
 <div class="pile-list">
-	<div ng-repeat="(key, value) in poiList" class="block masonry-brick">
+	<div ng-repeat="(key, value) in pileList" class="block masonry-brick">
 		<div class="row"><a href="/#/poiview/{{value._id}}">
 			<div class="col-md-4"><img class="image-block" ng-src="assets/images/00002.jpg"></div>
 			<div class="col-md-6">
 				<div>
-					<h4 class="font-title block-padtop">{{value.PlaceNameTh}} Rating: {{value.Rating}}</h4>
-					<h5 class="font-subtitle-blue block-padtop">{{value.District}} - {{value.Province}} ({{value.TelNo}})</h5>
+					<h4 class="font-title block-padtop">{{value.ReviewTitle}} Rating: {{value.Rating}}</h4>
+					<h5 class="font-subtitle-blue block-padtop">{{value.UpdateDate}} - {{value.CreateDate}}</h5>
 					<div class="font-normal-gray block-padtop">
-						<p>{{value.Description}}</p>
+						<p>{{value.ReviewContent}}</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2">user profile here</div>
+			<div class="col-md-2">{{value.UserId}}</div>
 		</a></div>
 	</div>
 </div>

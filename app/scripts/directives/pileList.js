@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.controller('pileListController', ['$scope', 'contentBlockService', function ($scope, contentBlockService) {
-	$scope.poiList = contentBlockService.getAll();
+.controller('pileListController', ['$scope', 'ReviewService', function ($scope, ReviewService) {
+	ReviewService.LoadReviews().then(function (data) {
+		$scope.pileList = data;
+	});
 }])
 .directive('pileList', function () {
 	return {

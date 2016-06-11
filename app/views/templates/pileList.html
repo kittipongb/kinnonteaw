@@ -1,17 +1,31 @@
 <div class="pile-list">
 	<div ng-repeat="(key, value) in pileList" class="block masonry-brick">
-		<div class="row"><a href="/#/poiview/{{value._id}}">
-			<div class="col-md-4"><img class="image-block" ng-src="assets/images/00002.jpg"></div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="image"><img class="image-block" ng-src="assets/images/00002.jpg"></div>
+			</div>
 			<div class="col-md-6">
-				<div>
-					<h4 class="font-title block-padtop">{{value.ReviewTitle}} Rating: {{value.Rating}}</h4>
-					<h5 class="font-subtitle-blue block-padtop">{{value.UpdateDate}} - {{value.CreateDate}}</h5>
-					<div class="font-normal-gray block-padtop">
-						<p>{{value.ReviewContent}}</p>
+				<div class="content">
+					<a class="no-underline" href="/#/review/{{value._id}}">
+						<div class="title">
+							<div class="text" uib-tooltip="{{value.ReviewTitle}}" tooltip-placement="bottom" tooltip-class="customClass" >{{value.ReviewTitle}}</div>
+							<div class="icon"><input type="number" name="rating_{{value._id}}" id="rating-readonly" class="rating" value="{{value.Rating}}" data-readonly data-icon-lib="fa" data-active-icon="fa-thumbs-up" data-inactive-icon="fa-thumbs-o-up"/></div>
+						</div>
+					</a>
+					<div class="subtitle">
+						<div class="tags">
+							<span class="tag" ng-repeat="(keyTag, tag) in value.Tags"><a class="no-underline" href="/#/tag/{{tag.text}}">{{tag.text}}</a></span>
+						</div>
+						<div class="date">{{value.UpdateDate | date : 'dd MMMM yyyy @H:mm'}}</div>
 					</div>
+					<a class="no-underline" href="/#/review/{{value._id}}">
+						<div class="teaser">
+							<p>{{value.ReviewContent}}</p>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class="col-md-2">{{value.UserId}}</div>
-		</a></div>
+		</div>
 	</div>
 </div>

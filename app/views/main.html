@@ -1,11 +1,11 @@
 <div id="main-container">
   <!-- Share your Journey-->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <button id="journey-create-btn" type="button" class="btn btn-default btn-block">
-      <div class="journey-create-text">Share your Journey</div>
+    <button id="journey-btn" type="button" class="btn btn-default btn-block journey-btn">
+      <div class="text">Share your Journey</div>
     </button>
   </div>
-  <div >
+  <div class="pad-v10">
     <pile-list ng-if="dataReady"></pile-list>
   </div>
   <div ng-if="!dataReady" class="text-center">

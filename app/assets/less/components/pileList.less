@@ -1,7 +1,53 @@
 .pile-list {
 	position: relative;
-	.image-block {
-		width: 100%;
-		padding: 10px;
+	.image {
+		.image-block {
+			width: 100%;
+			padding: 10px;
+		}
+	}
+	.content {
+		.title {
+			width: 100%;
+			display: inline-block;
+			font-size: large;
+			.text {
+				.text-orange;
+				.bold;
+				.pull-left;
+				display: inline-block;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: ~'-moz-calc(100% - 100px)';
+			    width: ~'-webkit-calc(100% - 100px)';
+			    width: ~'-o-calc(100% - 100px)';
+			    width: ~'calc(100% - 100px)';
+			}
+			.icon {
+				.pull-right;
+				.text-blue;
+				display: inline-block;
+				white-space: nowrap;
+				width: 100px;
+				padding: 0px 5px;
+			}
+		}
+		.subtitle {
+			width: 100%;
+			display: inline-block;
+			font-size: small;
+			color: grey;
+			.tags {
+				.pull-left;
+				display: inline-block;
+				white-space: nowrap;
+				padding-right: 5px;
+			}
+			.date {
+				.pull-right;
+				padding: 0px 10px;
+			}
+		}
 	}
 }

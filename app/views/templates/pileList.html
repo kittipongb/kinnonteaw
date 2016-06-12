@@ -6,9 +6,9 @@
 			</div>
 			<div class="col-md-6">
 				<div class="content">
-					<a class="no-underline" href="/#/review/{{value._id}}">
+					<a class="no-underline" href="/#/journey/{{value._id}}">
 						<div class="title">
-							<div class="text" uib-tooltip="{{value.ReviewTitle}}" tooltip-placement="bottom" tooltip-class="customClass" >{{value.ReviewTitle}}</div>
+							<div class="text" uib-tooltip="{{value.JourneyTitle}}" tooltip-placement="bottom" tooltip-class="customClass" >{{value.JourneyTitle}}</div>
 							<div class="icon"><input type="number" name="rating_{{value._id}}" id="rating-readonly" class="rating" value="{{value.Rating}}" data-readonly data-icon-lib="fa" data-active-icon="fa-thumbs-up" data-inactive-icon="fa-thumbs-o-up"/></div>
 						</div>
 					</a>
@@ -18,9 +18,9 @@
 						</div>
 						<div class="date">{{value.UpdateDate | date : 'dd MMMM yyyy @H:mm'}}</div>
 					</div>
-					<a class="no-underline" href="/#/review/{{value._id}}">
+					<a class="no-underline" href="/#/journey/{{value._id}}">
 						<div class="teaser">
-							<p>{{value.ReviewContent}}</p>
+							<p>{{value.JourneyContent}}</p>
 						</div>
 					</a>
 				</div>

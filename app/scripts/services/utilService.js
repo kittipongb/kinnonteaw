@@ -1,0 +1,13 @@
+"use strict"
+angular.module('kinnonteawApp').service("UtilService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
+	return {
+		isEmpty: function(obj) {
+	        for(var prop in obj) {
+	            if(obj.hasOwnProperty(prop))
+	                return false;
+	        }
+	        return true && JSON.stringify(obj) === JSON.stringify({});
+	    }
+	};
+
+}]);

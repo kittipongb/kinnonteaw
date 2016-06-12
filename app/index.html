@@ -9,15 +9,16 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css">
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css">
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.css">
     <link rel="stylesheet" href="/assets/css/application.css">
     <!-- endbuild -->
   </head>
@@ -31,7 +32,6 @@
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -117,15 +117,16 @@
     <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
     <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
     <script src="bower_components/bootstrap-rating-input/build/bootstrap-rating-input.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+    <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqUyoFIdSN7WVTqx5Q9aoRwGsbYL49-_s"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.5.2/oauth.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/header.js"></script>
@@ -133,13 +134,14 @@
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/poiview.js"></script>
-    <script src="scripts/controllers/review.js"></script>
+    <script src="scripts/controllers/journey.js"></script>
     <script src="scripts/constants/constants.js"></script>
     <script src="scripts/factory/dataFactory.js"></script>
     <script src="scripts/services/contentBlocksService.js"></script>
     <script src="scripts/services/credentialService.js"></script>
     <script src="scripts/services/userService.js"></script>
-    <script src="scripts/services/reviewService.js"></script>
+    <script src="scripts/services/journeyService.js"></script>
+    <script src="scripts/services/utilService.js"></script>
     <script src="scripts/directives/floatingList.js"></script>
     <script src="scripts/directives/pileList.js"></script>
     <script src="scripts/directives/poiInfo.js"></script>

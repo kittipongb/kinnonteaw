@@ -1,12 +1,12 @@
 "use strict"
-angular.module('kinnonteawApp').service("ReviewService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
-	var Reviews = [];
+angular.module('kinnonteawApp').service("JourneyService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
+	var Journeys = [];
     return {
-    	LoadReviews: function() {
+    	LoadJourneys: function() {
     		var defer = $q.defer();
-		    var loadReviewUrl = ENV.apiEndpoint + '/review/LoadReview';
+		    var loadJourneyUrl = ENV.apiEndpoint + '/journey/LoadJourney';
         
-	        $http.get(loadReviewUrl)
+	        $http.get(loadJourneyUrl)
 	        .success(function (data, status) {
 	        	
 	        	defer.resolve(data);
@@ -17,11 +17,11 @@ angular.module('kinnonteawApp').service("ReviewService", ["$q", "$http", "ENV", 
 
     		return defer.promise;
     	},
-    	LoadReviewByReviewId: function(ReviewId) {
+    	LoadJourneyByJourneyId: function(JourneyId) {
     		var defer = $q.defer();
-		    var loadReviewUrl = ENV.apiEndpoint + '/review/LoadReviewByReviewId/' + ReviewId;
+		    var loadJourneyUrl = ENV.apiEndpoint + '/journey/LoadJourneyByJourneyId/' + JourneyId;
         
-	        $http.get(loadReviewUrl)
+	        $http.get(loadJourneyUrl)
 	        .success(function (data, status) {
 	        	console.log(data);
 	        	defer.resolve(data);
@@ -32,11 +32,11 @@ angular.module('kinnonteawApp').service("ReviewService", ["$q", "$http", "ENV", 
 
     		return defer.promise;
     	},
-    	CreateReview: function(ReviewObject) {
+    	CreateJourney: function(JourneyObject) {
     		var defer = $q.defer();
-		    var createReviewUrl = ENV.apiEndpoint + '/review/CreateReview';
+		    var createJourneyUrl = ENV.apiEndpoint + '/journey/CreateJourney';
         
-	        $http.post(createReviewUrl, ReviewObject)
+	        $http.post(createJourneyUrl, JourneyObject)
 	        .success(function (data, status) {
 	        	defer.resolve(data);
 	        })

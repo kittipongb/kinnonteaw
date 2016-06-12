@@ -41,6 +41,10 @@ module.exports = function(config) {
       'bower_components/textAngular/dist/textAngular-sanitize.js',
       'bower_components/textAngular/dist/textAngularSetup.js',
       'bower_components/bootstrap-rating-input/build/bootstrap-rating-input.min.js',
+      'bower_components/moment/moment.js',
+      'bower_components/ng-tags-input/ng-tags-input.js',
+      'bower_components/oauth-js/dist/oauth.min.js',
+      'bower_components/angular-moment/angular-moment.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

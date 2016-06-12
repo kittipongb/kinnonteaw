@@ -1,31 +1,30 @@
 <div>
-	<div id="ViewReview" class="animated fadeIn" ng-if="Page.Mode == 'view'">
+	<div id="ViewJourney" class="animated fadeIn" ng-if="Page.Mode == 'view'">
 		<div class="row">
-			<div class="col-md-12"><a href="/articles" class="btn btn-default"><i class="fa fa-long-arrow-left"></i> กลับ</a></div>
+			<div class="col-md-12"><a href="#/journeys" class="btn btn-default"><i class="fa fa-long-arrow-left"></i> กลับ</a></div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h3>{{Review.ReviewTitle}}</h3>
+				<h3>{{Journey.JourneyTitle}}</h3>
 			</div>
 			<div class="col-md-12">
-				<div ng-repeat="tag in Review.Tags">{{tag.Text}}</div>
+				<div ng-repeat="tag in Journey.Tags">{{tag.Text}}</div>
 			</div>
 			<div class="col-md-12">
-				<div ta-bind ng-model="Review.ReviewContent"></div>
+				<div ta-bind ng-model="Journey.JourneyContent"></div>
 			</div>
-			<div class="col-md-12 review-footer">
+			<div class="col-md-12 journey-footer">
 				<div class="row">
 					<div class="col-md-2">
 					</div>
 					<div class="col-md-10">
-
 						<img id="" src="/assets/images/no-profile-img.png"" class="img-circle" width="64" height="64">
 						<div class="col-md-12">
-							{{Review.User.Username}}
+							{{Journey.User.Username}}
 						</div>
 						<div class="col-md-12">
 							อัพเดทล่าสุด
-							<i><span am-time-ago="Review.UpdateDate"></span></i>
+							<i><span am-time-ago="Journey.UpdateDate"></span></i>
 						</div>
 					</div>
 				</div>
@@ -41,33 +40,33 @@
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script>
 
-			<div class="fb-comments" data-href="http://localhost:9000/#/review/574d28f806d145ac4c2e2eb1" data-width="900" data-numposts="10"></div>
+			<div class="fb-comments" data-href="http://localhost:9000/#/journey/574d28f806d145ac4c2e2eb1" data-width="900" data-numposts="10"></div>
 		</div>
 	</div>
-	<div id="NewReview" class="animated fadeIn" ng-if="Page.Mode == 'new'">
+	<div id="NewJourney" class="animated fadeIn" ng-if="Page.Mode == 'new'">
 		<div class="row" >
-			<div class="col-md-12"><h3 class="article-header">Create Review</h3></div>
+			<div class="col-md-12"><h3 class="article-header">Create Journey</h3></div>
 			<div class="col-md-12">
 				<div class="col-md-2">หัวข้อ : </div>
 				<div class="col-md-10">
-					<input type="text" class="article-input form-control" ng-model="Review.ReviewTitle">
+					<input type="text" class="article-input form-control" ng-model="Journey.JourneyTitle">
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-2">เนื้อหา : </div>
 				<div class="col-md-10">
-					<div text-angular ng-model="Review.ReviewContent"></div>
+					<div text-angular ng-model="Journey.JourneyContent"></div>
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-2">แท็ก : </div>
 				<div class="col-md-10">
-					<tags-input ng-model="Review.Tags" class="article-input"></tags-input>
+					<tags-input ng-model="Journey.Tags" class="article-input"></tags-input>
 				</div>
 			</div>
 			<div class="col-md-12 text-center">
-				<a ng-click="SaveReview()" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> ตั้งกระทู้</a>
-				<a ng-click="CancelReview()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> ยกเลิก</a>
+				<a ng-click="SaveJourney()" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> บันทึกเรื่องราว</a>
+				<a ng-click="CancelJourney()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> ยกเลิก</a>
 			</div>
 		</div>
 	</div>

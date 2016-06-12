@@ -34,18 +34,18 @@ angular
         templateUrl: 'views/poiview.html',
         controller: 'PoiViewCtrl'
       })
-      .when('/reviews', {
-        templateUrl: 'views/review.html',
-        controller: 'ReviewCtrl'
+      .when('/journeys', {
+        templateUrl: 'views/journey.html',
+        controller: 'JourneyCtrl'
       })
-      .when('/review', {
-        templateUrl: 'views/review-detail.html',
-        controller: 'ReviewCtrl',
+      .when('/journey', {
+        templateUrl: 'views/journey-detail.html',
+        controller: 'JourneyCtrl',
         mode: 'new'
       })
-      .when('/review/:reviewId', {
-        templateUrl: 'views/review-detail.html',
-        controller: 'ReviewCtrl',
+      .when('/journey/:journeyId', {
+        templateUrl: 'views/journey-detail.html',
+        controller: 'JourneyCtrl',
         mode: 'view'
       })
       .when('/login', {

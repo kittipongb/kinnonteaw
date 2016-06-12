@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.controller('pileListController', ['$scope', 'ReviewService', function ($scope, ReviewService) {
-	ReviewService.LoadReviews().then(function (data) {
+.controller('pileListController', ['$scope', 'JourneyService', function ($scope, JourneyService) {
+	JourneyService.LoadJourneys().then(function (data) {
 		$scope.pileList = data;
 		_.delay(function () {
 			$('input.rating[type=number]').each(function() {

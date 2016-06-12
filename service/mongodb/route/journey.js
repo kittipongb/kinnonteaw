@@ -2,50 +2,50 @@ var express = require('express');
 var router = express.Router();
 var Q = require('q');
 
-router.get('/LoadReview', function(req, res){
-	db.collection('Review')
+router.get('/LoadJourney', function(req, res){
+	db.collection('Journey')
         .find({ 
             $query: {} ,
             $orderby: { CreateDate : -1 } // Last create date show before if 1 Last createdate go to the bottom
         })
-        .toArray(function (err, reviews) {
+        .toArray(function (err, journeys) {
             if (err) {
             console.log(err);
                 
                 
             } else {
-                console.log(reviews);
-                res.json(reviews);
+                console.log(journeys);
+                res.json(journeys);
             }
         });
 });
 
-router.get('/LoadReviewByPoiId/:PoiId', function(req, res) {
-    db.collection('Review')
+router.get('/LoadJourneyByPoiId/:PoiId', function(req, res) {
+    db.collection('Journey')
         .find({})
-        .toArray(function (err, reviews) {
+        .toArray(function (err, journeys) {
             if (err) {
 
             } else {
-                console.log(reviews);
-                res.json(reviews);
+                console.log(journeys);
+                res.json(journeys);
             }
         });
 });
 
-router.get('/LoadReviewByReviewId/:ReviewId', function(req, res) {
-    var ReviewId = req.params.ReviewId;
-    var o_id = bson.BSONPure.ObjectID(ReviewId.toString());
-    var LoadReviewyId = function() {
+router.get('/LoadJourneyByJourneyId/:JourneyId', function(req, res) {
+    var JourneyId = req.params.JourneyId;
+    var o_id = bson.BSONPure.ObjectID(JourneyId.toString());
+    var LoadJourneyId = function() {
         var defer = Q.defer();
-        db.collection('Review')
+        db.collection('Journey')
         .findOne({
             '_id': o_id
-        }, function (err, review) {
+        }, function (err, journey) {
             if (err) {
                 defer.reject(err);
             } else {
-                defer.resolve(review);
+                defer.resolve(journey);
             }
         });
         return defer.promise;
@@ -65,14 +65,14 @@ router.get('/LoadReviewByReviewId/:ReviewId', function(req, res) {
             });
         return defer.promise;
     };
-    var review = {};
-    LoadReviewyId()
+    var journey = {};
+    LoadJourneyId()
     .then(function(data, status) {
         if (!data) {
-            console.log('not found review');
+            console.log('not found journey');
         } else {
-            review = data;
-            var userId = review.UserId;
+            journey = data;
+            var userId = journey.UserId;
             return LoadUserById(userId);
         }
     }, function(err, status) {
@@ -80,26 +80,26 @@ router.get('/LoadReviewByReviewId/:ReviewId', function(req, res) {
     })
     .then(function(user, status) {
         if (!user) {
-            res.json(review);
+            res.json(journey);
         } else {
-            review.User = user;
-            res.json(review);
+            journey.User = user;
+            res.json(journey);
         }
     }, function(err, status) {
         console.log('2', err, err.stack.split("\n"));
     });
 });
 
-// Create Review
-router.post('/CreateReview', function (req, res, next) {
-    var Review = req.body;
-    console.log('create review ', Review);
+// Create Journey
+router.post('/CreateJourney', function (req, res, next) {
+    var Journey = req.body;
+    console.log('create journey ', Journey);
     var createDate = new Date ();
     createDate.setHours ( createDate.getHours() + 7 );// GMT Bangkok +7
-    Review.CreateDate = createDate;
-    Review.UpdateDate = createDate;
-    db.collection('Review')
-        .insert(Review, function (err, result) {
+    Journey.CreateDate = createDate;
+    Journey.UpdateDate = createDate;
+    db.collection('Journey')
+        .insert(Journey, function (err, result) {
             if (err) {
 
             } else {
@@ -111,32 +111,32 @@ router.post('/CreateReview', function (req, res, next) {
 });
 
 
-// Update Review
-router.get('/UpdateReview', function (req, res, next) {
-    var Review = req.body;
-    console.log('update review ', Review);
-    var id = Review._id;
+// Update Journey
+router.get('/UpdateJourney', function (req, res, next) {
+    var Journey = req.body;
+    console.log('update journey ', Journey);
+    var id = Journey._id;
     var o_id = bson.BSONPure.ObjectID(id.toString());
     var updateDate = new Date ();
     updateDate.setHours ( updateDate.getHours() + 7 );// GMT Bangkok +7
-    Review.UpdateDate = updateDate;
-    db.collection('Review')
+    Journey.UpdateDate = updateDate;
+    db.collection('Journey')
         .update({
                 '_id': o_id
             }, 
-            Review
+            Journey
             , function (error, result) {
                 if (error)
                     throw error
-                console.log("update review success ?? " , result);
+                console.log("update journey success ?? " , result);
             });
 });
 
-router.get('/DeleteReview/:ReviewId', function(req, res) {
-    var ReviewId = req.params.ReviewId;
-    console.log('delete Review ' + ReviewId);
-    var o_id = bson.BSONPure.ObjectID(ReviewId.toString());
-    db.collection(config.mongodb.review.name)
+router.get('/DeleteJourney/:JourneyId', function(req, res) {
+    var JourneyId = req.params.JourneyId;
+    console.log('delete Journey ' + JourneyId);
+    var o_id = bson.BSONPure.ObjectID(JourneyId.toString());
+    db.collection('Journey')
         .remove({
             _id: o_id
         }, function (error, result) {

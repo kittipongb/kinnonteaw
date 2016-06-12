@@ -12,7 +12,7 @@ angular.module('kinnonteawApp')
     $scope.$on('$routeChangeSuccess', function() {
         // $routeParams should be populated here
         console.log('change success ' , $routeParams);
-        if (isEmpty($routeParams)) {
+        if (UtilService.isEmpty($routeParams)) {
             $scope.CreateJourney();
         } else {
             var journeyId = $routeParams.journeyId;

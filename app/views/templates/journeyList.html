@@ -1,0 +1,15 @@
+<div>
+	<div class="col-md-1">
+		<a href="#/journey/{{journey._id}}" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span></a>
+	</div>
+	<div class="col-md-3 text-center row-img-thumbnail-journeys">
+		<img ng-src="{{journey.SourceImageThumbnail}}" class="img-thumbnail-articles" />
+
+	</div>
+	<div class="col-md-7">
+		<h4>{{journey.JourneyTitle}} </h4>
+		{{journey.JourneyContent | limitTo: 200 }}
+
+		<i><span am-time-ago="journey.CreateDate"></span></i>
+	</div>
+</div>

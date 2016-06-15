@@ -20,7 +20,7 @@
 					</div>
 					<a class="no-underline" href="/#/journey/{{value._id}}">
 						<div class="teaser">
-							<p>{{value.JourneyContent}}</p>
+							<p>{{(value.JourneyContent | htmlToPlaintext) |  limitText:true:200:' ...'  }}</p>
 						</div>
 					</a>
 				</div>

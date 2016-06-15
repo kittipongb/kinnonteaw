@@ -8,7 +8,7 @@
 	</div>
 	<div class="col-md-7">
 		<h4>{{journey.JourneyTitle}} </h4>
-		{{journey.JourneyContent | limitTo: 200 }}
+		{{(journey.JourneyContent | htmlToPlaintext) |  limitText:true:200:' ...'  }}
 
 		<i><span am-time-ago="journey.CreateDate"></span></i>
 	</div>

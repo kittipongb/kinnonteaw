@@ -4,15 +4,12 @@ angular.module('kinnonteawApp')
 .controller('HeaderCtrl', ['$scope','$route','$routeParams', '$location', 'UserService', 'CredentialService', 
 	function ($scope, $route, $routeParams,$location, UserService, CredentialService) {
 
-    $scope.User = {};
-
-    $scope.$on('UpdateUser', function(event, data) { 
+    
+    $scope.$on('UpdateUserBroadcast', function(event, data) { 
         console.log('header ', data); 
-        $scope.User = data;
+        $scope.User = data.User;
     });
     
-    
-
     CredentialService.LoadOAuth()
     .then(function(data, status) {
         OAuth.initialize('header',data);

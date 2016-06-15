@@ -1,5 +1,12 @@
 "use strict"
 angular.module('kinnonteawApp').service("UserService", ["$q", "$http", "ENV", function ($q, $http, ENV) {
+    var User = {};
+    var GetUser = function() {
+      return User;
+    };
+    var SetUser = function(data) {
+      User = data;
+    };
     return {
     	CreateAndUpdateWithSocial:function(response) {
     		var defer = $q.defer();
@@ -39,6 +46,8 @@ angular.module('kinnonteawApp').service("UserService", ["$q", "$http", "ENV", fu
         		defer.resolve(error);
         	});
     		return defer.promise;
-    	}
+    	},
+      SetUser: SetUser,
+      GetUser: GetUser
     };
 }]);

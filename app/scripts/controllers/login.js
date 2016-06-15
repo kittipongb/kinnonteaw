@@ -34,9 +34,12 @@ angular.module('kinnonteawApp')
     	UserService.LoginWithUsernameAndPassword($scope.User.Signin_Username, $scope.User.Signin_Password)
     	.then(function(data, status) {
     		console.log('login ', data);
-        UserService.User = data;
+        UserService.SetUser(data);
+        data.IsLogin = true;
         
-        $scope.$emit('UpdateUser', data);
+        $scope.$emit('UpdateUserEmit', {
+            User: data
+        });
         $location.path('#');
     	}, function(err, status) {
 

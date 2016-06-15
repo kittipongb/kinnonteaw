@@ -63,9 +63,9 @@ angular
 })
 .run(function ($rootScope) {
 
-    $rootScope.$on('UpdateUser', function (event, args) {
+    $rootScope.$on('UpdateUserEmit', function (event, args) {
       console.log('root ', args);
-        $rootScope.$broadcast('UpdateUser', args);
+        $rootScope.$broadcast('UpdateUserBroadcast', args);
     });
     
 });

@@ -1,19 +1,21 @@
 'use strict';
 angular.module('kinnonteawApp')
-  .controller('JourneyCtrl', ['$scope', '$routeParams', 'JourneyService', 'UtilService',
-   function ($scope, $routeParams, JourneyService, UtilService) {
+  .controller('JourneyCtrl', ['$scope', '$rootScope', '$routeParams', '$window', '$log', 'JourneyService','UserService',  'UtilService',
+   function ($scope, $rootScope, $routeParams,$window, $log, JourneyService, UserService, UtilService) {
   	$scope.Journeys = [];
     $scope.Journey = {};
     $scope.Page = {
         Name: '',
         Mode: ''
     }
+    $scope.User = UserService.GetUser();
     
     $scope.$on('$routeChangeSuccess', function() {
         // $routeParams should be populated here
         console.log('change success ' , $routeParams);
         if (UtilService.isEmpty($routeParams)) {
-            $scope.CreateJourney();
+            $scope.Page.Mode = 'new';
+       //     $scope.CreateJourney();
         } else {
             var journeyId = $routeParams.journeyId;
             $scope.ViewJourney(journeyId);
@@ -39,10 +41,50 @@ angular.module('kinnonteawApp')
     $scope.CreateJourney = function() {
         console.log('create journey ');
     	$scope.Page.Mode = 'new';
+        if (UtilService.isEmpty($scope.User) &&  $scope.User._id === undefined) {
+            console.log('empty ');
+            swal({
+              title: 'ท่านยังไม่ได้เข้าสู่ระบบ',
+              text: 'ท่านต้องการเข้าสู่ระบบ ?',
+              type: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'ใช่',
+              cancelButtonText: 'ไม่',
+            }).then(function() {
+/*
+              swal(
+                'Deleted!',
+                'Your imaginary file has been deleted.',
+                'success'
+              );*/
+          //      $rootScope.$apply(function() {
+                  $window.location.assign('#/login');
+        //        });
+            }, function(dismiss) {
+              // dismiss can be 'cancel', 'overlay', 'close', 'timer'
+              if (dismiss === 'cancel') {
+            /*    swal(
+                  'Cancelled',
+                  'Your imaginary file is safe :)',
+                  'error'
+                );*/
+
+              }
+            });
+        } else {
+            console.log('NOT empty ');
+           
+       //     $rootScope.$apply(function() {
+                $scope.Page.Mode = 'new';
+                $window.location.assign('#/journey');
+                
+       //     });
+            
+        }
     };
 
     $scope.CancelJourney = function() {
-    	$scope.Page.Mode = 'view';
+    	$window.location.assign('#/journeys');
     };
 
     $scope.ViewJourney = function(journeyId) {
@@ -63,11 +105,13 @@ angular.module('kinnonteawApp')
     }
 
     $scope.SaveJourney = function() {
+        $scope.Journey.UserId = $scope.User._id;
+        console.log($scope.Journey);
     	JourneyService.CreateJourney($scope.Journey)
     	.then(function(data, status) {
-    		console.log(data);
+    		console.log('success', data);
 
-            $location.path('#/journeys');  
+            $window.location.assign('#/journeys');
     	}, function(err, status) {
 
     	});

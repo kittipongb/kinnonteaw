@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Q = require('q');
 
+router.get('/', function(req, res){
+    console.log('home journey');
+});
+
 router.get('/LoadJourney', function(req, res){
 	db.collection('Journey')
         .find({ 
@@ -14,7 +18,7 @@ router.get('/LoadJourney', function(req, res){
                 
                 
             } else {
-                console.log(journeys);
+           //     console.log(journeys);
                 res.json(journeys);
             }
         });
@@ -27,7 +31,7 @@ router.get('/LoadJourneyByPoiId/:PoiId', function(req, res) {
             if (err) {
 
             } else {
-                console.log(journeys);
+          //      console.log(journeys);
                 res.json(journeys);
             }
         });
@@ -91,30 +95,29 @@ router.get('/LoadJourneyByJourneyId/:JourneyId', function(req, res) {
 });
 
 // Create Journey
-router.post('/CreateJourney', function (req, res, next) {
+router.post('/CreateJourney', function (req, res) {
     var Journey = req.body;
     console.log('create journey ', Journey);
     var createDate = new Date ();
+    Journey.UserId = bson.BSONPure.ObjectID(Journey.UserId.toString());
     createDate.setHours ( createDate.getHours() + 7 );// GMT Bangkok +7
     Journey.CreateDate = createDate;
     Journey.UpdateDate = createDate;
     db.collection('Journey')
         .insert(Journey, function (err, result) {
             if (err) {
-
+                console.log('2', err, err.stack.split("\n"));
             } else {
                 console.log(result);
             }
-
-        //    console.log("Insert poi sub type success ?? " + result[0]._id);
         });
 });
 
 
 // Update Journey
-router.get('/UpdateJourney', function (req, res, next) {
+router.get('/UpdateJourney', function (req, res) {
     var Journey = req.body;
-    console.log('update journey ', Journey);
+ //   console.log('update journey ', Journey);
     var id = Journey._id;
     var o_id = bson.BSONPure.ObjectID(id.toString());
     var updateDate = new Date ();

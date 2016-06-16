@@ -133,10 +133,9 @@ angular.module('kinnonteawApp')
     	JourneyService.CreateJourney($scope.Journey)
     	.then(function(data, status) {
     		console.log('success', data);
-
             $window.location.assign('#/journeys');
     	}, function(err, status) {
-
+            console.log('err', err);
     	});
     }
 }]);

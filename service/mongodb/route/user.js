@@ -165,7 +165,6 @@ router.get('/FindByUsernameAndPassword/:Username/:Password', function (req, res)
             //    console.log(err);
                 defer.reject(err);
             } else {
-                console.log('oneuser ', doc);
                 defer.resolve(doc);
             }
         });
@@ -219,7 +218,6 @@ router.get('/FindByUsernameAndPassword/:Username/:Password', function (req, res)
             res.sendStatus(404);
             return;
         } else {
-            console.log('1',data);
             var queryOneAppUser = {
                $or: [ { Username: Username }, { Email : Username } ],
                Terminal : 'web'
@@ -232,7 +230,6 @@ router.get('/FindByUsernameAndPassword/:Username/:Password', function (req, res)
         return;
     })
     .then(function(data, status) {
-        console.log('2',data);
         res.json(data);
     });
     var findOneAppUser = function (query, callback) {

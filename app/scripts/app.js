@@ -18,7 +18,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'CONFIG',
-    'textAngular','ngTagsInput'
+    'textAngular','ngTagsInput', 'ui.bootstrap.dropdownToggle'
   ])
   .config(function ($routeProvider) {
     $routeProvider

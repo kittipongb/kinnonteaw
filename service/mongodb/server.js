@@ -59,6 +59,19 @@ mongodb.MongoClient.connect(config.connection_url + config.collection_name, func
 */
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get('/', function(req, res, next) {
+  // Handle the get for this route
+});
+
+app.post('/', function(req, res, next) {
+ // Handle the post for this route
+});
 // Connect to MongoLab
  
 mongodb.MongoClient.connect("mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.com:35713/knt", function (err, database) {
@@ -72,6 +85,29 @@ mongodb.MongoClient.connect("mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.c
 	}
 });
 
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error('Port ' + config.nodejs_port + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error('Port ' + config.nodejs_port + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
 
 process.on('uncaughtException', function (err) {
     console.log(err);

@@ -96,6 +96,7 @@ router.get('/LoadJourneyByJourneyId/:JourneyId', function(req, res) {
 
 // Create Journey
 router.post('/CreateJourney', function (req, res) {
+    console.log('roue create journey ');
     var Journey = req.body;
     console.log('create journey ', Journey);
     var createDate = new Date ();
@@ -112,7 +113,6 @@ router.post('/CreateJourney', function (req, res) {
             }
         });
 });
-
 
 // Update Journey
 router.get('/UpdateJourney', function (req, res) {

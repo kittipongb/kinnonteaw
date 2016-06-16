@@ -64,7 +64,7 @@
                 
                 <a href="#/login" class="btn btn-primary" ng-if="!User.IsLogin"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
 
-                <a href="#/logout" class="btn btn-danger" ng-if="User.IsLogin"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+                <a href="" ng-click="Logout()" class="btn btn-danger" ng-if="User.IsLogin"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
                 
               </li>
             </ul>
@@ -150,6 +150,7 @@
     <script src="scripts/directives/poiInfo.js"></script>
     <script src="scripts/directives/mapCanvas.js"></script>
     <script src="scripts/directives/journeyList.js"></script>
+    <script src="scripts/directives/journeyCardList.js"></script>
     <script src="scripts/filters/htmlToPlainTextFilter.js"></script>
     <script src="scripts/filters/limitTextFilter.js"></script>
     <script id="dsq-count-scr" src="//kinnonteaw.disqus.com/count.js" async></script>

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.controller('HeaderCtrl', ['$scope','$route','$routeParams', '$location', 'UserService', 'CredentialService', 
-	function ($scope, $route, $routeParams,$location, UserService, CredentialService) {
+.controller('HeaderCtrl', ['$scope','$route','$window', '$routeParams', '$location', 'UserService', 'CredentialService', 
+	function ($scope, $route, $window, $routeParams,$location, UserService, CredentialService) {
 
     
     $scope.$on('UpdateUserBroadcast', function(event, data) { 
@@ -26,4 +26,24 @@ angular.module('kinnonteawApp')
       $scope.IsRequestSignup = false;
     };
 
+    $scope.Logout = function() {
+        swal({
+              title: 'ออกจากระบบ',
+              text: 'ท่านต้องการออกจากระบบ ?',
+              type: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'ใช่',
+              cancelButtonText: 'ไม่',
+            }).then(function() {
+                $scope.$emit('UpdateUserEmit', {
+                    User: {}
+                });
+                $window.location.assign('#/login');
+            }, function(dismiss) {
+              // dismiss can be 'cancel', 'overlay', 'close', 'timer'
+              if (dismiss === 'cancel') {
+            
+                }
+            });
+        }
 }]);

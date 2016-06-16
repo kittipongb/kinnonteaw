@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.directive('journeyList', function () {
+.directive('journeyCardList', function () {
 	return {
 		restrict: 'E',
 		scope: {
 			journey: '='
 		},
 		replace: true,
-		templateUrl: 'views/templates/journeyList.html',
+		templateUrl: 'views/templates/journeyCardList.html',
 		controller: function($scope) {
 		}
 	};
-});
+})

@@ -2,7 +2,8 @@
 angular.module('kinnonteawApp')
   .controller('JourneyCtrl', ['$scope', '$rootScope', '$routeParams', '$window', '$log', 'JourneyService','UserService',  'UtilService',
    function ($scope, $rootScope, $routeParams,$window, $log, JourneyService, UserService, UtilService) {
-  	$scope.Journeys = [];
+  	$scope.GreatJourneys = [];
+    $scope.Journeys = [];
     $scope.Journey = {};
     $scope.Page = {
         Name: '',
@@ -84,7 +85,29 @@ angular.module('kinnonteawApp')
     };
 
     $scope.CancelJourney = function() {
-    	$window.location.assign('#/journeys');
+        if (($scope.Journey.JourneyTitle === undefined || $scope.Journey.JourneyTitle.length <= 0)
+        || ($scope.Journey.JourneyContent === undefined || $scope.Journey.JourneyContent.length <= 0)
+        || ($scope.Journey.Tags === undefined || $scope.Journey.Tags.length <= 0)) {
+            swal({
+              title: 'ท่านยังไม่ได้บันทึกเรื่องราวของท่าน',
+              text: 'ท่านต้องการบันทึกรายการ ?',
+              type: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'ใช่',
+              cancelButtonText: 'ไม่',
+            }).then(function() {
+                  $scope.SaveJourney();
+            }, function(dismiss) {
+              // dismiss can be 'cancel', 'overlay', 'close', 'timer'
+              if (dismiss === 'cancel') {
+                $window.location.assign('#/journeys');
+              }
+            });
+
+        } else {
+            $window.location.assign('#/journeys');
+        }
+    	
     };
 
     $scope.ViewJourney = function(journeyId) {

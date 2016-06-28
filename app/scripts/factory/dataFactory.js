@@ -7,11 +7,11 @@ angular.module('kinnonteawApp').factory('dataFactory', ['$q',
         };
 
         dataModel.setUser = function (data) {
-            return _.set('dataModel.user', data);
+            return _.set('user', data);
         };
 
         dataModel.getUser = function () {
-            return _.get('dataModel.user');
+            return _.get('user');
         };
         
         return dataModel;

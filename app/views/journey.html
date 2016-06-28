@@ -14,10 +14,6 @@
 				<div class="text-center" ng-if="Journeys.length <= 0">
 					<i class="fa fa-comment-o fa-4x"></i>
 				</div>
-				<div class="col-md-12" ng-repeat="Journey in Journeys">
-					<journey-list journey="Journey"></journey-list>
-				</div>
-				<!--<journey-card-list journey="Journey"></journey-card-list> -->
 				<div class="row" >
 					<div ng-repeat="Journey in Journeys">
 						<journey-card-list journey="Journey"></journey-card-list> 

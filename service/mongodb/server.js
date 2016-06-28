@@ -83,13 +83,16 @@ app.post('/', function(req, res, next) {
 });
 // Connect to MongoLab
  
-mongodb.MongoClient.connect("mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.com:35713/knt", function (err, database) {
+var local_uri = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/KNT';
+var mlab_uri = process.env.MONGOLAB_URI || 'mongodb://kinnonteaw:kntweb1234@ds035713.mongolab.com:35713/knt';
+
+mongodb.MongoClient.connect(local_uri, function (err, database) {
     if (err) {
         console.log("database error");
         console.log(err, err.stack.split("\n"));
     }
     if (database) {
-	    console.log("db not null " + database);
+	    console.log("db not null ", database);
 	    db = database;
 	}
 });

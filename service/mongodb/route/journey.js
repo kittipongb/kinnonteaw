@@ -9,8 +9,9 @@ router.get('/', function(req, res){
 router.get('/LoadJourney', function(req, res){
 	db.collection('Journey')
         .find({ 
-            $query: {} ,
-            $orderby: { CreateDate : -1 } // Last create date show before if 1 Last createdate go to the bottom
+        })
+        .sort({
+            CreateDate : -1 // Last create date show before if 1 Last createdate go to the bottom
         })
         .toArray(function (err, journeys) {
             if (err) {

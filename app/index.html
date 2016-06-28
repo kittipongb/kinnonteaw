@@ -62,8 +62,16 @@
                   {{User.Username}}
               </li>
               <li class="header-content">
-                
+                <button popover-placement="bottom" uib-popover-template="myPopoverTemplate.html" type="button" class="btn btn-default">Popover </button>
+                <script type="text/ng-template" id="myPopoverTemplate.html">
+                    <div>Test</div>
+                      <div class="form-group">
+                        <label>Popup Title:</label>
+                        <input type="text" ng-model="dynamicPopover.title" class="form-control">
+                    </div>
+                </script>
                 <a href="#/login" class="btn btn-primary" ng-if="!User.IsLogin"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
+
 
                 <a href="" ng-click="Logout()" class="btn btn-danger" ng-if="User.IsLogin"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
                 
@@ -141,6 +149,7 @@
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/poiview.js"></script>
     <script src="scripts/controllers/journey.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
     <script src="scripts/constants/constants.js"></script>
     <script src="scripts/factory/dataFactory.js"></script>
     <script src="scripts/services/contentBlocksService.js"></script>
@@ -152,7 +161,6 @@
     <script src="scripts/directives/pileList.js"></script>
     <script src="scripts/directives/poiInfo.js"></script>
     <script src="scripts/directives/mapCanvas.js"></script>
-    <script src="scripts/directives/journeyList.js"></script>
     <script src="scripts/directives/journeyCardList.js"></script>
     <script src="scripts/directives/textAngularDropdown.js"></script>
     <script src="scripts/filters/htmlToPlainTextFilter.js"></script>

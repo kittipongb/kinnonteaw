@@ -1,24 +1,24 @@
 <div class="col-md-4">
-                            <div class="card ">
-                                <div class="card-image">
-                                    <img class="img-responsive" ng-src="{{Journey.SourceImageThumbnail}}" ng-if="Journey.SourceImageThumbnail !== undefined">
-                                    <img class="img-responsive" 
-                                    src="http://placehold.it/400x200" 
-                                    ng-if="(Journey.SourceImageThumbnail === undefined || Journey.SourceImageThumbnail.length <= 0)">
-                                    <span class="card-title">{{Journey.JourneyTitle}}</span>
-                                </div>
-                                
-                                <div class="card-content">
-                                    <p>{{(Journey.JourneyContent | htmlToPlaintext) |  limitText:true:200:' ...'  }}</p>
-                                </div>
-                                
-                                <div class="card-action">
-                                    <a href="#/Journey/{{Journey._id}}" ><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                                    <a href="#/Journey/{{Journey._id}}" ><i class="fa fa-commenting-o" aria-hidden="true"></i> COMMENTS</a>
-                                <!--    <a href="#" target="new_blank">Link</a>
-                                    <a href="#" target="new_blank">Link</a>
-                                    <a href="#" target="new_blank">Link</a>
-                                    <a href="#" target="new_blank">Link</a>-->
-                                </div>
-                            </div>
-                        </div>
+    <div class="card">
+        <div class="card-image">
+            <img class="img-responsive" ng-src="{{journey.SourceImageThumbnail}}" ng-if="journey.SourceImageThumbnail !== undefined">
+            <img class="img-responsive" 
+            src="http://placehold.it/400x200" 
+            ng-if="(journey.SourceImageThumbnail === undefined || journey.SourceImageThumbnail.length <= 0)">
+            <span class="card-title">{{journey.JourneyTitle}}</span>
+        </div>
+        
+        <div class="card-content">
+            <p>{{(journey.JourneyContent | htmlToPlaintext) |  limitText:true:200:' ...'  }}</p>
+        </div>
+        
+        <div class="card-action">
+            <a href="#/journey/{{journey._id}}" ><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+            <a href="#/journey/{{journey._id}}" ><i class="fa fa-commenting-o" aria-hidden="true"></i> COMMENTS</a>
+        <!--    <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>-->
+        </div>
+    </div>
+</div>

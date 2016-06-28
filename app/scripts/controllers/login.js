@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kinnonteawApp')
-.controller('LoginCtrl', ['$scope','$http', '$route','$routeParams', '$location', 'UserService', 'CredentialService', 
-	function ($scope, $http, $route, $routeParams,$location, UserService, CredentialService) {
+.controller('LoginCtrl', ['$scope','$http', '$route','$routeParams', '$location', 'UserService', 'CredentialService', 'dataFactory',
+	function ($scope, $http, $route, $routeParams,$location, UserService, CredentialService, dataFactory) {
 
     $scope.User = {
       Signup_Email:'',
@@ -36,7 +36,8 @@ angular.module('kinnonteawApp')
     		console.log('login ', data);
         UserService.SetUser(data);
         data.IsLogin = true;
-        
+        dataFactory.setUser(data);
+        console.log(dataFactory.getUser());
         $scope.$emit('UpdateUserEmit', {
             User: data
         });
@@ -143,6 +144,7 @@ angular.module('kinnonteawApp')
           $scope.$emit('UpdateUserEmit', {
                     User: $scope.User
                 });
+          dataFactory.setUser($scope.User);
                   $location.path('/');
         }, function(error, status) {
 

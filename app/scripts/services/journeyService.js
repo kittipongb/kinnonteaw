@@ -35,7 +35,7 @@ angular.module('kinnonteawApp')
     	CreateJourney: function(JourneyObject) {
     		console.log('in journey service ', JourneyObject);
     		var defer = $q.defer();
-		    var createJourneyUrl = ENV.apiEndpoint + "/journey/CreateJourney";
+		    var createJourneyUrl = ENV.apiEndpoint + '/journey/CreateJourney';
         
 	        $http.post(createJourneyUrl, JourneyObject)
 	        .success(function (data) {

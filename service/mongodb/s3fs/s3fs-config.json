@@ -1,6 +1,6 @@
 {
-	"AWS_ACCESS_KEY_ID" : "AKIAI24BRGQPJKMMNVBA",
-	"AWS_SECRET_ACCESS_KEY" : "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",
+	"AWS_ACCESS_KEY_ID" : "",
+	"AWS_SECRET_ACCESS_KEY" : "",
 	"HOME_BUCKET" : "kinnonteaw",
 	"USER_BUCKET" : "/user/",
 	"REVIEW_BUCKET" : "/review/",

@@ -4,13 +4,17 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "bower": "^1.7.9",
+    "connect-multiparty": "^2.0.0",
     "control": "^0.2.3",
+    "fs-promise": "^0.5.0",
     "grunt-build": "^0.1.1",
     "grunt-ng-constant": "^2.0.1",
     "load-grunt-tasks": "^3.5.0",
     "lodash": "^4.11.1",
+    "node-uuid": "^1.4.7",
     "nodemailer": "^0.7.1",
     "q": "^1.4.1",
+    "s3fs": "^2.4.7",
     "xoauth2": "^1.1.0"
   },
   "repository": {

@@ -6,6 +6,7 @@ global.config = require('../mongodb_config.json');
 global.appRoot = require('app-root-path');
 global.mongodb = require('mongodb');
 global.bson = require('bson');
+global.uuid = require('node-uuid');
 global.db;
 global.collection;
 

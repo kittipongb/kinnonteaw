@@ -4,11 +4,11 @@
 		<div class="user-profile"> 
 			<div class="row">
 				<div class="user-cover text-center">
-					<div id="div-user-background-upload-image" class="pull-right" tooltip-placement="right" uib-tooltip="เพื่อใส่รูปพื้นหลังของท่าน">
+					<div id="div-user-background-upload-image" class="pull-right" tooltip-placement="right" ngf-select ngf-change="UploadUserBackgroundImage($files)" uib-tooltip="เพื่อใส่รูปพื้นหลังของท่าน">
 						<div id="user-background-upload-image" >		
 						</div>
 					</div>
-					<div id="div-user-profile-upload-image" class="pull-right" tooltip-placement="top" uib-tooltip="เพื่อใส่รูปโปรไฟล์ของท่าน">
+					<div id="div-user-profile-upload-image" class="pull-right" tooltip-placement="top" ngf-select ngf-change="UploadUserProfileImage($files)" uib-tooltip="เพื่อใส่รูปโปรไฟล์ของท่าน">
 						<div id="user-profile-upload-image"></div>
 					</div>
 					<div class="col-md-12 text-center user-info">
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class="col-md-12 text-center div-profile-footer">
 					<a class="btn btn-warning btn-outline">Save Traveler</a>
 				</div>
 			</div>

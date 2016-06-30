@@ -56,7 +56,7 @@ angular
         templateUrl: 'views/places.html',
         controller: 'PlacesCtrl'
       })
-      .when('/profile' , {
+      .when('/profile/:profileId' , {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })

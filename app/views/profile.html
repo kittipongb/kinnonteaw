@@ -1,8 +1,47 @@
-<div>
-	<div class="col-md-offset-1 col-md-6">
-		Name
-		Surname
-		Activity
-		Profile image
+<div class="row">
+	<div class="col-xs-1 col-sm-1 col-md-3"></div>
+	<div class="col-xs-10 col-sm-10 col-md-6">
+		<div class="user-profile"> 
+			<div class="row">
+				<div class="user-cover text-center">
+					<div id="div-user-background-upload-image" class="pull-right" tooltip-placement="right" uib-tooltip="เพื่อใส่รูปพื้นหลังของท่าน">
+						<div id="user-background-upload-image" >		
+						</div>
+					</div>
+					<div id="div-user-profile-upload-image" class="pull-right" tooltip-placement="top" uib-tooltip="เพื่อใส่รูปโปรไฟล์ของท่าน">
+						<div id="user-profile-upload-image"></div>
+					</div>
+					<div class="col-md-12 text-center user-info">
+						<h3>{{User.Username}}</h3>
+					</div>
+					<div class="col-md-12 text-center user-avatar">
+						<img src="/assets/images/no-profile-img.png" class="img-circle img-avatar " width="100px" height="100px">
+						<div class=""></div>
+					</div>
+				</div>
+				<div class="col-md-12 text-center user-detail">
+					<form class="form-horizontal user-form">
+						<div class="form-group">
+							<input type="text" placeholder="Traveler Name (Username)" class="form-control input-lg" ng-model="User.Username">
+						</div>
+						<div class="form-group">
+							<input type="email" placeholder="Email" class="form-control input-lg" ng-model="User.Email">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Roles (Eater, Shopping, Traveller, etc)" class="form-control input-lg" ng-model="User.Role">
+						</div>
+						<div class="form-group">
+						  <textarea class="form-control input-lg" rows="5" id="about" ng-model="User.About" placeholder="About you"></textarea>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<a class="btn btn-warning btn-outline">Save Traveler</a>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div class="col-xs-1 col-sm-1 col-md-3"></div>
 </div>

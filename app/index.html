@@ -55,9 +55,10 @@
             </ul>
             <ul class="nav nav-pills pull-right nav-header">
               <li class="header-profile-img">
-
                   <div id="UserProfileImage">
-                   <img src="/assets/images/no-profile-img.png"  class="img-circle" width="40" height="40" ng-show="!User.IsLogin || User.ProfileImage === undefined" >
+                    <a href="#/profile/{{User._id}}">
+                      <img src="/assets/images/no-profile-img.png" class="img-circle" width="40" height="40" ng-show="!User.IsLogin || User.ProfileImage === undefined" >
+                    </a>
                   </div>
                   {{User.Username}}
               </li>
@@ -156,6 +157,7 @@
     <script src="scripts/services/credentialService.js"></script>
     <script src="scripts/services/userService.js"></script>
     <script src="scripts/services/journeyService.js"></script>
+    <script src="scripts/services/profileService.js"></script>
     <script src="scripts/services/utilService.js"></script>
     <script src="scripts/directives/floatingList.js"></script>
     <script src="scripts/directives/pileList.js"></script>

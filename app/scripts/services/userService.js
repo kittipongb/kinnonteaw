@@ -8,6 +8,18 @@ angular.module('kinnonteawApp').service("UserService", ["$q", "$http", "ENV", fu
       User = data;
     };
     return {
+      LoadUserById: function(uid) {
+        var defer = $q.defer();
+        var url = ENV.apiEndpoint + "/user/LoadUserById/" + uid;
+          $http.get(url)
+            .success(function (data, status) {
+              defer.resolve(data);
+            })
+            .error(function(error, status) {
+              defer.reject(error);
+            });
+            return defer.promise;
+      },
     	CreateAndUpdateWithSocial:function(response) {
     		var defer = $q.defer();
 		    var createAndCheckLofinSocialUrl = ENV.apiEndpoint + '/user/CreateAndUpdateWithSocial';

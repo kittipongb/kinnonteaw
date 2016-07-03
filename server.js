@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
-global.config = require('../mongodb_config.json');
+global.config = require('./service/mongodb_config.json');
 global.appRoot = require('app-root-path');
 global.mongodb = require('mongodb');
 global.bson = require('bson');
@@ -12,20 +12,20 @@ global.collection;
 
 //app.use();
 var cors = require('cors');
-var index = require('./route/index');
-var poi = require('./route/poi');
-var poi_type = require('./route/poi_type');
-var poi_subtype = require('./route/poi_subtype');
-var journey = require('./route/journey');
-var user = require('./route/user');
-var staff = require('./route/staff');
-var role = require('./route/role');
-var province = require('./route/province');
-var district = require('./route/district');
-var subdistrict = require('./route/subdistrict');
-var schema = require('./route/schema');
-var rest = require('./route/rest');
-var oauths = require('../oauth/oauths');
+var index = require('./service/mongodb/route/index');
+var poi = require('./service/mongodb/route/poi');
+var poi_type = require('./service/mongodb/route/poi_type');
+var poi_subtype = require('./service/mongodb/route/poi_subtype');
+var journey = require('./service/mongodb/route/journey');
+var user = require('./service/mongodb/route/user');
+var staff = require('./service/mongodb/route/staff');
+var role = require('./service/mongodb/route/role');
+var province = require('./service/mongodb/route/province');
+var district = require('./service/mongodb/route/district');
+var subdistrict = require('./service/mongodb/route/subdistrict');
+var schema = require('./service/mongodb/route/schema');
+var rest = require('./service/mongodb/route/rest');
+var oauths = require('./service/oauth/oauths');
 
 //app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -99,10 +99,10 @@ mongodb.MongoClient.connect(config.connection_url + config.collection_name, func
 app.get('/', function(req, res) {
   console.log('app.get / ');
     if (environment !== 'production') {
-      res.sendFile(appRoot.path + '/app/index.html');
+      res.sendFile('./app/index.html');
 
     } else {
-      res.sendFile(appRoot.path + '/app/index.html');
+      res.sendFile('./app/index.html');
   //    res.sendFile(path.resolve(__dirname, '../../') + '/index.html');
     }
 

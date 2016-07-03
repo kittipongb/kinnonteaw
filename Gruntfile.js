@@ -25,6 +25,7 @@ module.exports = function (grunt) {
   // Project configuration.
   var pkg = require('./package.json');
 
+  grunt.loadNpmTasks('grunt-contrib-compress');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -142,7 +143,7 @@ module.exports = function (grunt) {
 
     express: {
       options: {
-        port: 3333
+        port: 3030
       },
       dev: {
         options: {
@@ -382,6 +383,18 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      expressjs: {
+        expand: true,
+        cwd: 'service',
+        dest: '<%= yeoman.dist %>/service',
+        src: ['{,*/}*.*', '{,*/}*/{,*/}*/*']
+      },
+      configfile: {
+        expand: true,
+        cwd: './',
+        dest: '<%= yeoman.dist %>',
+        src: ['bower.json', 'package.json','server.js', '.bowerrc']
       }
     },
 
@@ -395,6 +408,8 @@ module.exports = function (grunt) {
       ],
       dist: [
         'copy:styles',
+        'copy:expressjs',
+        'copy:configfile',
         'imagemin',
         'svgmin'
       ]
@@ -466,10 +481,26 @@ module.exports = function (grunt) {
             }
           }
         }
+      },
+
+      // make a zipfile
+      compress : {
+          main : {
+              options : {
+                  archive : "dist/knt-ams-" + (new Date()).getFullYear()+
+                  ((new Date()).getMonth().toString().length < 2 ? "0"+((new Date()).getMonth()+1) : ((new Date()).getMonth()+1)) +
+                  ((new Date()).getDate().toString().length < 2 ? "0"+(new Date()).getDate() : (new Date()).getDate()) +
+                  (new Date()).getHours() + (new Date()).getMinutes() + (new Date()).getSeconds() +
+                  ".zip"
+              },
+              files : [
+                  { expand: true, src : "**/*", cwd : "dist/web" }
+              ]
+          }
       }
 
   });
-
+  
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -516,7 +547,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'compress'
   ]);
 
   grunt.registerTask('default', [
